@@ -1,0 +1,3648 @@
+String gameName = "Glory";
+float movingClouds = 250;
+float movingClouds2 = 450;
+float movingClouds3 = 0;
+float cloudSpeed = 1;
+float runfire = 550;
+float currentGunLoco = random(-100, 100);
+float degreeVariable = 270;
+float fireAtWill = 5;
+float fireAtWill2 = 0;
+float speed = key;
+float plane = 128;
+float planeColou = 135;
+float planeColour = 130;
+float bastFire = 212 ;
+float bastFire2 = 207 ;
+float rotationDegLevel1 = 270;
+float speedVariable = 6;
+float levelCompleted = 50;
+float fireAtWillLevel2 = 5; float speedVariableLevel2 = 6;
+float rotationDegLevel2 = 270;
+float fireAtWill2Level2 = 0;
+float levelCompleted2 = 50;
+float rotationDegLevel3 = 270;
+float fireAtWill2Level3 = 0;
+float fireAtWillLevel3 = 5;
+float levelCompleted3 = 50;
+float speedVariableLevel3 = 6;
+float rotationDegLevel4 = 270;
+float fireAtWill2Level4 = 0;
+float fireAtWillLevel4 = 5;
+float levelCompleted4 = 50;
+float speedVariableLevel4 = 6;
+float rotationDegLevel5 = 270;
+float fireAtWill2Level5 = 0;
+float fireAtWillLevel5 = 5;
+float levelCompleted5 = 50;
+float speedVariableLevel5 = 6;
+float rotationDegLevel6 = 270;
+float fireAtWill2Level6 = 0;
+float fireAtWillLevel6 = 5;
+float levelCompleted6 = 50;
+float speedVariableLevel6 = 6;
+float rotationDegLevel7 = 270;
+float fireAtWill2Level7 = 0;
+float fireAtWillLevel7 = 5;
+float levelCompleted7 = 50;
+float speedVariableLevel7 = 6;
+float rotationDegLevel8 = 270;
+float fireAtWill2Level8 = 0;
+float fireAtWillLevel8 = 5;
+float levelCompleted8 = 50;
+float speedVariableLevel8 = 6;
+float rotationDegLevel9 = 270;
+float fireAtWill2Level9 = 0;
+float fireAtWillLevel9 = 5;
+float levelCompleted9 = 50;
+float speedVariableLevel9 = 6;
+float rotationDegLevel10 = 270;
+float fireAtWill2Level10 = 0;
+float fireAtWillLevel10 = 5;
+float levelCompleted10 = 50;
+float speedVariableLevel10 = 6;
+int state;
+void setup(){
+size(500, 500);
+
+}
+void backgroundSimple(){
+fill(255);
+textSize(15);
+text("INFO", 363, 450);
+background(154, 169, 214);
+fill(0);
+textSize(20);
+fill(39, 63, 138);
+rect(0, 300, 500, 200);
+fill(255);
+rect(0, 400, 500, 100);
+}
+
+
+ 
+ 
+ 
+
+void destroyerSetup(){
+  fill(68, 117, 81);
+rect(0, 240, 10, 50);
+fill(110, 110, 115);
+rect(0, 250, 20, 10);
+fill(0);
+ellipse(5, 230, 25, 25);
+fill(110, 110, 115);
+rect(120, 275, 70, 15);
+fill(110, 110, 115);
+rect(0, 300, 200, 30);
+triangle(200,290,200,330,240,290);
+fill(68, 117, 81);
+rect(0, 290, 200, 10);
+fill(110, 110, 115);
+quad(-20, 289, 0, 274, 60, 274, 100, 289);
+fill(68, 117, 81);
+rect(0, 240, 10, 50);
+fill(110, 110, 115);
+rect(0, 250, 20, 10);
+fill(0);
+ellipse(5, 230, 25, 25);
+fill(110, 110, 115);
+rect(120, 275, 70, 15);
+fill(0);
+//Right Size Text
+fill(0);
+textSize(15);
+text("INFO:", 253, 430);
+fill(0);
+textSize(10);
+text("U (WindSpeed) = ", 253, 460);
+fill(0);
+textSize(10);
+text("g (gravity)        =  ", 253, 480);
+
+//Left Size Text
+fill(0);
+textSize(15);
+text("INPUT:", 3, 430);
+fill(0);
+rect(0, 400, 500, 5);
+fill(0);
+rect(243, 405, 5, 95);
+stroke(25);
+fill(255,0,0);
+rect(83, 435, 90, 30);
+fill(0);
+textSize(25);
+text("FIRE", 103, 459);
+ 
+}
+
+            //Opening Screen
+void drawOpening() {
+textSize(width*0.2);
+background(50, 153, 168);
+noStroke();
+fill(255);
+//clouds
+ellipse(movingClouds, height*0.1818, width*0.2, height*0.2);
+ellipse(movingClouds + width*0.1, height*0.2181, width*0.2, height*0.2);
+ellipse(movingClouds + width*0.2, height*0.18181, width*0.2, height*0.2);
+ellipse(movingClouds2 +width*0.4, height*0.18181, width*0.24, height*0.2);
+ellipse(movingClouds2 + width*0.5, height*0.27272727, width*0.2, height*0.2);
+ellipse(movingClouds2 + width*0.6, height*0.23636, width*0.2, height*0.2);
+
+ellipse(movingClouds3 -400, 350, width*0.2, height*0.2);
+ellipse(movingClouds3 - 450, 350, width*0.2, height*0.2);
+ellipse(movingClouds3 - 500, 380, width*0.2, height*0.2);
+ellipse(movingClouds3 - 550, 350, width*0.24, height*0.2);
+ellipse(movingClouds3 - 600, 380, width*0.2, height*0.2);
+ellipse(movingClouds3 - 650, 350, width*0.2, height*0.2);
+
+movingClouds3 = movingClouds3 + cloudSpeed;
+if (movingClouds3 > 1200){
+movingClouds3 = -200;}
+
+
+movingClouds = movingClouds + cloudSpeed;
+if (movingClouds > 600){
+movingClouds = -200;}
+movingClouds2 = movingClouds2 + cloudSpeed;
+if (movingClouds2 > 700){
+movingClouds2 = -300;}
+//firefight
+fill(255, 0, 0);
+rect(currentGunLoco, gunfire, 10, 30);
+gunfire = gunfire - 20;
+if (gunfire < -1000){
+gunfire = 500;
+currentGunLoco = random(500);
+}
+if (currentGunLoco < -120){
+  currentGunLoco = 345;}
+if (currentGunLoco > 620){
+  currentGunLoco = 345;}
+//name (Buttons)
+fill(0);
+text(gameName, 120, 120);
+fill(255, 0, 0);
+rect(70, 450, 110, 40);
+textSize(15);
+fill(255);
+text("How To Play", 83, 475);
+fill(255, 0, 0);
+rect(200, 450, 110, 40);
+textSize(20);
+fill(255);
+text("LAUNCH", 213, 480);
+fill(255);
+ 
+fill(255, 0, 0);
+rect(330, 450, 110, 40);
+fill(255);
+text("INFO", 363, 480);
+stroke(2);
+fill(128, 135, 130);
+ellipse(250, 200, 400, 60);
+arc(399, 200, 100, 120, PI, TWO_PI);
+fill(212, 207, 207);
+arc(189, 190, 150, 80, PI, TWO_PI);
+fill(128, 135, 130);
+triangle(200, 210, 300, 290, 330, 210);
+fill(0);
+rect(393, 155, 10, 50);
+rect(373, 175, 50, 10);
+if(state==0)
+   if((mouseX<=310 && mouseX>=200) && (mouseY<=490 && mouseY>=450)) {
+      state = 1; // start menu
+    }
+   else if((mouseX<=180 && mouseX>=70) && (mouseY<=490 && mouseY>=450)) {
+      state = 2;
+    }
+   else if((mouseX<=490380 && mouseX>=380) && (mouseY<=490 && mouseY>=450)) {
+      state = 3;
+    }
+}
+
+
+void gameLevel1(){
+
+ float twoSeventy = 270;
+  fill(255);
+textSize(15);
+text("INFO", 363, 450);
+background(154, 169, 214);
+fill(0);
+textSize(20);
+text("Level 1", 225, 25);
+fill(39, 63, 138);
+rect(0, 300, 500, 200);
+fill(255);
+rect(0, 400, 500, 100);
+
+ 
+   int fireSelection3 = 30;
+  int fireSelection2 = 50;
+  int fireSelection1 = 75;
+ int fireSelection4 = 90;
+
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 454, 380);
+if((mouseX<=495 && mouseX>=425) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel1 =  270 - fireSelection4 ;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 314, 380);
+if((mouseX<=355 && mouseX>=285) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel1 =  270 - fireSelection3;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 174, 380);
+if((mouseX<=150 && mouseX>=80) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel1 =  270 - fireSelection2;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 34, 380);
+if((mouseX<=75 && mouseX>=5) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel1 =  270 - fireSelection1;}
+ 
+ 
+ 
+ 
+//Planes
+fill(255, 0, 0);
+ellipse(0, 0, 100, 100);
+fill(plane, planeColou, planeColour);
+ellipse(250, 100, 150, 25);
+arc(305, 95, 30, 40, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(229, 95, 65, 30, PI, TWO_PI);
+fill(0);
+rect(303, 83, 3, 15);
+rect(297, 89, 15, 3);
+fill(plane, planeColou, planeColour);
+triangle(220, 105, 275, 125, 290, 105);
+
+
+//Artilery
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel1));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2, fireAtWill,7, 9);
+pop();
+mousePressed(); {
+
+if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)) {
+fireAtWill= fireAtWill +speedVariable;}
+
+if  ((fireAtWill<=212.5 && fireAtWill>=180.5)&& (rotationDegLevel1<=222 && rotationDegLevel1>=190)){
+speedVariable = 0;}
+if  ((fireAtWill<=212.5 && fireAtWill>=180.5)&& (rotationDegLevel1<=222 && rotationDegLevel1>=190)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted, levelCompleted);
+levelCompleted=levelCompleted+3;
+if (levelCompleted>=400){
+  fill(0);
+  textSize(40);
+  text("Level 1 Completed", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 4; // start menu
+}
+}}
+if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)) {
+fireAtWill= fireAtWill +speedVariable;}
+if  ((fireAtWill>=212.5)&& (rotationDegLevel1>=222 || rotationDegLevel1<=190)){
+speedVariable = 0;}
+if  ((fireAtWill>=212.5)&& (rotationDegLevel1>=222 || rotationDegLevel1<=190)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted, levelCompleted);
+levelCompleted=levelCompleted+3;
+if (levelCompleted>=400){
+  fill(0);
+  textSize(40);
+  text("Level 1 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 0; // start menu
+ 
+}
+}}
+
+
+
+destroyerSetup();
+}
+
+}
+
+
+
+
+void gameLevel2(){
+ backgroundSimple();
+ fill(0);
+textSize(20);
+text("Level 2", 225, 25);
+
+ int fireSelection3 = 15;
+  int fireSelection2 = 30;
+  int fireSelection1 = 60;
+ int fireSelection4 = 80;
+
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 454, 380);
+if((mouseX<=495 && mouseX>=425) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel2 =  270 - fireSelection4 ;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 314, 380);
+if((mouseX<=355 && mouseX>=285) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel2 =  270 - fireSelection3;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 174, 380);
+if((mouseX<=150 && mouseX>=80) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel2 =  270 - fireSelection2;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 34, 380);
+if((mouseX<=75 && mouseX>=5) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel2 =  270 - fireSelection1;}
+//Planes
+fill(255, 0, 0);
+ellipse(0, 0, 100, 100);
+fill(plane, planeColou, planeColour);
+ellipse(400, 200, 150, 25);
+arc(455, 195, 30, 40, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(379, 195, 65, 30, PI, TWO_PI);
+fill(0);
+rect(453, 183, 3, 15);
+rect(447, 189, 15, 3);
+fill(plane, planeColou, planeColour);
+triangle(370, 205, 425, 225, 440, 205);
+ push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel2));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level2, fireAtWillLevel2,7, 9);
+pop();
+mousePressed(); {
+if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)) {
+fireAtWillLevel2 = fireAtWillLevel2 + speedVariableLevel2;}}
+if  ((fireAtWillLevel2>=260.5 && fireAtWillLevel2<=280.5)&& (rotationDegLevel2>=246 && rotationDegLevel2<=257)){
+speedVariableLevel2 = 0;}
+if  ((fireAtWillLevel2>=260.5 && fireAtWillLevel2<=280.5)&& (rotationDegLevel2>=246 && rotationDegLevel2<=257)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted2, levelCompleted2);
+levelCompleted2=levelCompleted2+3;
+if (levelCompleted2>=400){
+  fill(0);
+  textSize(40);
+  text("Level 2 COMPLETED", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 5;
+ 
+}
+}}
+
+if  ((fireAtWillLevel2>=260.5)&& (rotationDegLevel2<=246 || rotationDegLevel2>257)){
+speedVariable = 0;}
+if  ((fireAtWillLevel2>=260.5)&& (rotationDegLevel2<=246 || rotationDegLevel2>257)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted2, levelCompleted2);
+levelCompleted2=levelCompleted2+3;
+    if (levelCompleted2>=400){
+  fill(0);
+  textSize(40);
+  text("Level 2 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 0; // start menu
+}
+}}
+destroyerSetup();}
+
+void gameLevel3(){
+  backgroundSimple();
+   fill(0);
+textSize(20);
+text("Level 3", 225, 25);
+
+ int fireSelection3 = 33;
+  int fireSelection2 = 81;
+  int fireSelection1 = 91;
+ int fireSelection4 = 120;
+
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 454, 380);
+if((mouseX<=495 && mouseX>=425) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel3 =  270 - fireSelection4 ;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 314, 380);
+if((mouseX<=355 && mouseX>=285) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel3 =  270 - fireSelection3;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 174, 380);
+if((mouseX<=150 && mouseX>=80) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel3 =  270 - fireSelection2;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 34, 380);
+if((mouseX<=75 && mouseX>=5) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel3 =  270 - fireSelection1;}
+
+
+
+
+
+//Planes
+fill(255, 0, 0);
+ellipse(0, 0, 100, 100);
+fill(plane, planeColou, planeColour);
+ellipse(140, 47, 75, 12.5);
+arc(167, 45, 15, 20, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(129, 45, 32.5, 15, PI, TWO_PI);
+fill(0);
+rect(166, 40, 1.5, 7.5);
+rect(163, 43, 7.5, 1.5);
+fill(plane, planeColou, planeColour);
+triangle(128, 50.5, 155.5, 60.5, 163, 50.5);
+ push();
+ 
+ mousePressed(); {
+
+if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)) {
+fireAtWillLevel3= fireAtWillLevel3 +speedVariableLevel3;}
+
+if  ((fireAtWillLevel3<=282.5 && fireAtWillLevel3>=230.5)&& (rotationDegLevel3<=185 && rotationDegLevel3>=173)){
+speedVariableLevel3 = 0;}
+if  ((fireAtWillLevel3<=282.5 && fireAtWillLevel3>=230.5)&& (rotationDegLevel3<=185 && rotationDegLevel3>=173)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted3, levelCompleted3);
+levelCompleted3=levelCompleted3+3;
+if (levelCompleted3>=400){
+  fill(0);
+  textSize(40);
+  text("Level 3 Completed", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 6; // start menu
+}
+}}
+if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)) {
+fireAtWillLevel3= fireAtWillLevel3 +speedVariableLevel3;}
+if  ((fireAtWillLevel3>=282.5)&& (rotationDegLevel3>=185 || rotationDegLevel3<=173)){
+speedVariableLevel3 = 0;}
+if  ((fireAtWillLevel3>=282.5)&& (rotationDegLevel3>=185 || rotationDegLevel3<=173)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted3, levelCompleted3);
+levelCompleted3=levelCompleted3+3;
+if (levelCompleted3>=400){
+  fill(0);
+  textSize(40);
+  text("Level 3 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 0; // start menu
+ 
+}
+}}}
+ 
+ 
+ 
+ 
+ 
+ 
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel3));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level3, fireAtWillLevel3,7, 9);
+pop();
+
+ destroyerSetup();
+}
+
+void gameLevel4(){
+   backgroundSimple();
+    fill(0);
+textSize(20);
+text("Level 4", 225, 25);
+
+
+   int fireSelection3 = 28;
+  int fireSelection2 = 54;
+  int fireSelection1 = 65;
+ int fireSelection4 = 41;
+
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 454, 380);
+if((mouseX<=495 && mouseX>=425) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel4 =  270 - fireSelection4 ;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 314, 380);
+if((mouseX<=355 && mouseX>=285) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel4 =  270 - fireSelection3;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 174, 380);
+if((mouseX<=150 && mouseX>=80) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel4 =  270 - fireSelection2;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 34, 380);
+if((mouseX<=75 && mouseX>=5) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel4 =  270 - fireSelection1;}
+
+
+
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel4));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level4, fireAtWillLevel4,7, 9);
+pop();
+destroyerSetup();
+
+   //Planes
+fill(255, 0, 0);
+ellipse(0, 0, 100, 100);
+fill(plane, planeColou, planeColour);
+ellipse(440, 47, 75, 12.5);
+arc(467, 45, 15, 20, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(429, 45, 32.5, 15, PI, TWO_PI);
+fill(0);
+rect(466, 40, 1.5, 7.5);
+rect(463, 43, 7.5, 1.5);
+fill(plane, planeColou, planeColour);
+triangle(428, 50.5, 455.5, 60.5, 463, 50.5);
+
+if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)) {
+fireAtWillLevel4= fireAtWillLevel4 +speedVariableLevel4;}
+
+if  ((fireAtWillLevel4<=482.5 && fireAtWillLevel4>=347.5)&& (rotationDegLevel4<=233.5 && rotationDegLevel4>=227.5)){
+speedVariableLevel4 = 0;}
+if  ((fireAtWillLevel4<=482.5 && fireAtWillLevel4>=347.5)&& (rotationDegLevel4<=233.5 && rotationDegLevel4>=227.5)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted4, levelCompleted4);
+levelCompleted4=levelCompleted4+3;
+if (levelCompleted4>=400){
+  fill(0);
+  textSize(40);
+  text("Level 4 Completed", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 7; // start menu
+}
+}}
+if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)) {
+fireAtWillLevel4= fireAtWillLevel4 +speedVariableLevel4;}
+if  ((fireAtWillLevel4>=382.5)&& (rotationDegLevel4>=233.5 || rotationDegLevel4<=227.5)){
+speedVariableLevel4 = 0;}
+if  ((fireAtWillLevel4>=382.5)&& (rotationDegLevel4>=233.5 || rotationDegLevel4<=227.5)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted4, levelCompleted4);
+levelCompleted4=levelCompleted4+3;
+if (levelCompleted4>=400){
+  fill(0);
+  textSize(40);
+  text("Level 4 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 0; // start menu
+ 
+}
+}}}
+void gameLevel5(){
+   
+  backgroundSimple();
+     fill(0);
+textSize(20);
+text("Level 5", 225, 25);
+
+
+int fireSelection3 = 15;
+  int fireSelection2 = 25;
+  int fireSelection1 = 45;
+ int fireSelection4 = 61;
+
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 454, 380);
+if((mouseX<=495 && mouseX>=425) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel5 =  270 - fireSelection4 ;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 314, 380);
+if((mouseX<=355 && mouseX>=285) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel5 =  270 - fireSelection3;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 174, 380);
+if((mouseX<=150 && mouseX>=80) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel5 =  270 - fireSelection2;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 34, 380);
+if((mouseX<=75 && mouseX>=5) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel5 =  270 - fireSelection1;}
+
+
+
+
+
+
+
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel5+2.5));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level5, fireAtWillLevel5,7, 9);
+pop();
+  textSize(10);
+text("2.5 LIFT", 350, 460);
+fill(0);
+  destroyerSetup();
+ 
+  //plane
+fill(255, 0, 0);
+ellipse(0, 0, 100, 100);
+fill(plane, planeColou, planeColour);
+ellipse(440, 167, 75, 12.5);
+arc(467, 165, 15, 20, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(429, 165, 32.5, 15, PI, TWO_PI);
+fill(0);
+rect(466, 160, 1.5, 7.5);
+rect(463, 163, 7.5, 1.5);
+fill(plane, planeColou, planeColour);
+triangle(428, 170.5, 455.5, 180.5, 463, 170.5);
+ 
+  if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)) {
+fireAtWillLevel5= fireAtWillLevel5 +speedVariableLevel5;}
+ 
+
+if  ((fireAtWillLevel5<=462.5 && fireAtWillLevel5>=305.5)&& (rotationDegLevel5>=243 && rotationDegLevel5<=247.8)){
+speedVariableLevel5 = 0;}
+if  ((fireAtWillLevel5<=462.5 && fireAtWillLevel5>=305.5)&& (rotationDegLevel5>=243 && rotationDegLevel5<=247.8)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted5, levelCompleted5);
+levelCompleted5=levelCompleted5+3;
+if (levelCompleted5>=400){
+  fill(0);
+  textSize(40);
+  text("Level 5 Completed", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 8; // start menu
+}
+}}
+
+if  ((fireAtWillLevel5>=305.5)&& (rotationDegLevel5>=247.8 || rotationDegLevel5<=243)){
+speedVariableLevel5 = 0;}
+if  ((fireAtWillLevel5>=305.5)&& (rotationDegLevel5>=247.8 || rotationDegLevel5<=243)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted5, levelCompleted5);
+levelCompleted5=levelCompleted5+3;
+if (levelCompleted5>=400){
+  fill(0);
+  textSize(40);
+  text("Level 5 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 0; // start menu
+}
+}}}
+ 
+void  gameLevel6(){
+   backgroundSimple();
+        fill(0);
+textSize(20);
+text("Level 6", 225, 25);
+
+
+int fireSelection3 = 115;
+  int fireSelection2 = 95;
+  int fireSelection1 = 75;
+ int fireSelection4 = 131;
+
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 454, 380);
+if((mouseX<=495 && mouseX>=425) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel6 =  270 - fireSelection4 ;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 314, 380);
+if((mouseX<=355 && mouseX>=285) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel6 =  270 - fireSelection3;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 174, 380);
+if((mouseX<=150 && mouseX>=80) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel6 =  270 - fireSelection2;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 34, 380);
+if((mouseX<=75 && mouseX>=5) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel6 =  270 - fireSelection1;}
+
+
+
+
+
+
+
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel6+0.89));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level6, fireAtWillLevel6,7, 9);
+pop();
+
+fill(255, 0, 0);
+ellipse(0, 0, 100, 100);
+fill(plane, planeColou, planeColour);
+ellipse(40, 67, 75, 12.5);
+arc(67, 65, 15, 20, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(29, 65, 32.5, 15, PI, TWO_PI);
+fill(0);
+rect(66, 60, 1.5, 7.5);
+rect(63, 63, 7.5, 1.5);
+fill(plane, planeColou, planeColour);
+triangle(28, 70.5, 55.5, 80.5, 63, 70.5);
+
+textSize(10);
+text("10.7 LIFT", 350, 460);
+text("9.81 ", 350, 480);
+fill(0);
+ 
+  if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)) {
+fireAtWillLevel6= fireAtWillLevel6 +speedVariableLevel6;}
+ 
+  destroyerSetup();
+ 
+  if  ((fireAtWillLevel6<=462.5 && fireAtWillLevel6>=230.5)&& (rotationDegLevel6>=147 && rotationDegLevel6<=161)){
+speedVariableLevel6 = 0;}
+if  ((fireAtWillLevel6<=462.5 && fireAtWillLevel6>=230.5)&& (rotationDegLevel6>=147 && rotationDegLevel6<=161)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted6, levelCompleted6);
+levelCompleted6=levelCompleted6+3;
+if (levelCompleted6>=400){
+  fill(0);
+  textSize(40);
+  text("Level 6 Completed", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 9; // start menu
+}
+}}
+
+if  ((fireAtWillLevel6>=230.5)&& (rotationDegLevel6>=161 || rotationDegLevel6<=147)){
+speedVariableLevel6 = 0;}
+if  ((fireAtWillLevel6>=230.5)&& (rotationDegLevel6>=161 || rotationDegLevel6<=147)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted6, levelCompleted6);
+levelCompleted6=levelCompleted6+3;
+if (levelCompleted6>=400){
+  fill(0);
+  textSize(40);
+  text("Level 6 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 0; // start menu
+}
+}}}
+
+void gameLevel7(){
+  backgroundSimple();
+  textSize(20);
+  fill(0);
+text("Level 7", 225, 25);
+
+int fireSelection3 = 40;
+  int fireSelection2 = 42;
+  int fireSelection1 = 46;
+ int fireSelection4 = 49;
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 454, 380);
+if((mouseX<=495 && mouseX>=425) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel7 =  270 - fireSelection4 ;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 314, 380);
+if((mouseX<=355 && mouseX>=285) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel7 =  270 - fireSelection3;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 174, 380);
+if((mouseX<=150 && mouseX>=80) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel7 =  270 - fireSelection2;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 34, 380);
+if((mouseX<=75 && mouseX>=5) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel7 =  270 - fireSelection1;}
+
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel7-8.81));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level7, fireAtWillLevel7,7, 9);
+pop();
+
+textSize(10);
+text("(45L / 7)+ 3 = 8      LIFT", 350, 460);
+text("9.81 ", 350, 480);
+fill(0);
+
+
+fill(255, 0, 0);
+ellipse(0, 0, 50, 50);
+fill(plane, planeColou, planeColour);
+ellipse(340, 67, 37.5, 6.25);
+arc(353, 65.5, 9, 10, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(332, 65, 16.25, 7.5, PI, TWO_PI);
+fill(0);
+rect(353, 60, 0.75, 5.75);
+rect(351.5, 63, 3.75, 0.75);
+fill(plane, planeColou, planeColour);
+triangle(329, 67.25, 350.5, 73.25, 355, 68.25);
+
+
+ 
+  if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)) {
+fireAtWillLevel7= fireAtWillLevel7 +speedVariableLevel7;}
+
+
+  if  ((fireAtWillLevel7<=462.5 && fireAtWillLevel7>=285.5)&& (rotationDegLevel7>=228 && rotationDegLevel7<=232)){
+speedVariableLevel7 = 0;}
+if  ((fireAtWillLevel7<=462.5 && fireAtWillLevel7>=285.5)&& (rotationDegLevel7>=226 && rotationDegLevel7<=232)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted7, levelCompleted7);
+levelCompleted7=levelCompleted7+3;
+if (levelCompleted7>=400){
+  fill(0);
+  textSize(40);
+  text("Level 7 Completed", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 10; // start menu
+}
+}}
+
+if  ((fireAtWillLevel7>=285.5)&& (rotationDegLevel7>=232 || rotationDegLevel7<=228)){
+speedVariableLevel7 = 0;}
+if  ((fireAtWillLevel7>=285.5)&& (rotationDegLevel7>=232 || rotationDegLevel7<=228)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted7, levelCompleted7);
+levelCompleted7=levelCompleted7+3;
+if (levelCompleted7>=400){
+  fill(0);
+  textSize(40);
+  text("Level 7 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 0; // start menu
+}
+}}
+    destroyerSetup();
+}
+
+void gameLevel8(){
+   backgroundSimple();
+   
+     textSize(20);
+  fill(0);
+text("Level 8", 225, 25);
+
+int fireSelection3 = 70;
+  int fireSelection2 = 80;
+  int fireSelection1 = 85;
+ int fireSelection4 = 90;
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 454, 380);
+if((mouseX<=495 && mouseX>=425) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel8 =  270 - fireSelection4 ;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 314, 380);
+if((mouseX<=355 && mouseX>=285) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel8 =  270 - fireSelection3;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 174, 380);
+if((mouseX<=150 && mouseX>=80) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel8 =  270 - fireSelection2;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 34, 380);
+if((mouseX<=75 && mouseX>=5) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel8 =  270 - fireSelection1;}
+
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel8-5.81));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level8, fireAtWillLevel8,7, 9);
+pop();
+
+textSize(10);
+text("((sin(90)x4))+cos(90))  LIFT", 350, 460);
+text("9.81 ", 350, 480);
+fill(0);
+
+
+fill(255, 0, 0);
+ellipse(0, 0, 50, 50);
+fill(plane, planeColou, planeColour);
+ellipse(140, 67, 37.5, 6.25);
+arc(153, 65.5, 9, 10, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(132, 65, 16.25, 7.5, PI, TWO_PI);
+fill(0);
+rect(153, 60, 0.75, 5.75);
+rect(151.5, 63, 3.75, 0.75);
+fill(plane, planeColou, planeColour);
+triangle(129, 67.25, 150.5, 73.25, 155, 68.25);
+   
+     if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)) {
+fireAtWillLevel8= fireAtWillLevel8 +speedVariableLevel8;}
+   
+     if  ((fireAtWillLevel8<=462.5 && fireAtWillLevel8>=205.5)&& (rotationDegLevel8>=180 && rotationDegLevel8<=188)){
+speedVariableLevel8 = 0;}
+if  ((fireAtWillLevel8<=462.5 && fireAtWillLevel8>=205.5)&& (rotationDegLevel8>=180 && rotationDegLevel8<=188)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted8, levelCompleted8);
+levelCompleted8=levelCompleted8+3;
+if (levelCompleted8>=400){
+  fill(0);
+  textSize(40);
+  text("Level 8 Completed", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 11; // start menu
+}
+}}
+
+if  ((fireAtWillLevel8>=205.5)&& (rotationDegLevel8>=188 || rotationDegLevel8<=180)){
+speedVariableLevel8 = 0;}
+if  ((fireAtWillLevel8>=205.5)&& (rotationDegLevel8>=188 || rotationDegLevel8<=180)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted8, levelCompleted8);
+levelCompleted8=levelCompleted8+3;
+if (levelCompleted8>=400){
+  fill(0);
+  textSize(40);
+  text("Level 8 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 0; // start menu
+}
+}}
+  destroyerSetup();
+}
+
+void gameLevel9(){
+   backgroundSimple();
+   
+   
+   int fireSelection3 = 120;
+  int fireSelection2 = 127;
+  int fireSelection1 = 123;
+ int fireSelection4 = 130;
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 454, 380);
+if((mouseX<=495 && mouseX>=425) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel9 =  270 - fireSelection4 ;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 314, 380);
+if((mouseX<=355 && mouseX>=285) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel9 =  270 - fireSelection3;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 174, 380);
+if((mouseX<=150 && mouseX>=80) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel9 =  270 - fireSelection2;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 34, 380);
+if((mouseX<=75 && mouseX>=5) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel9 =  270 - fireSelection1;}
+
+   
+   
+   
+   
+        textSize(20);
+  fill(0);
+text("Level 9", 225, 25);
+
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel9+0.09));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level9, fireAtWillLevel9,7, 9);
+pop();
+
+textSize(10);
+text("(csc^2(x)-cot^2(x))9.9  LIFT", 350, 460);
+text("9.81 ", 350, 480);
+fill(0);
+
+
+fill(255, 0, 0);
+ellipse(0, 0, 50, 50);
+fill(plane, planeColou, planeColour);
+ellipse(10, 127, 37.5, 6.25);
+arc(23, 125.5, 9, 10, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(2, 125, 16.25, 7.5, PI, TWO_PI);
+fill(0);
+rect(23, 120, 0.75, 5.75);
+rect(21.5, 123, 3.75, 0.75);
+fill(plane, planeColou, planeColour);
+triangle(-1, 127.25, 20.5, 133.25, 25, 128.25);
+
+     if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)) {
+fireAtWillLevel9= fireAtWillLevel9 +speedVariableLevel9;}
+
+     if  ((fireAtWillLevel9<=462.5 && fireAtWillLevel9>=205.5)&& (rotationDegLevel9>=137 && rotationDegLevel9<=143)){
+speedVariableLevel9 = 0;}
+if  ((fireAtWillLevel9<=462.5 && fireAtWillLevel9>=205.5)&& (rotationDegLevel9>=137 && rotationDegLevel9<=143)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted9, levelCompleted9);
+levelCompleted9=levelCompleted9+3;
+if (levelCompleted9>=400){
+  fill(0);
+  textSize(40);
+  text("Level 9 Completed", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 12; // start menu
+}
+}}
+
+if  ((fireAtWillLevel9>=205.5)&& (rotationDegLevel9>=143 || rotationDegLevel9<=137)){
+speedVariableLevel9 = 0;}
+if  ((fireAtWillLevel9>=205.5)&& (rotationDegLevel9>=143 || rotationDegLevel9<=137)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted9, levelCompleted9);
+levelCompleted9=levelCompleted9+3;
+if (levelCompleted9>=400){
+  fill(0);
+  textSize(40);
+  text("Level 9 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 0; // start menu
+}
+}}
+
+  destroyerSetup();
+}
+
+void gameLevel0(){
+   backgroundSimple();
+   
+   int fireSelection3 = 2;
+  int fireSelection2 = 5;
+  int fireSelection1 = 7;
+ int fireSelection4 = 10;
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 454, 380);
+if((mouseX<=495 && mouseX>=425) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel10 =  270 - fireSelection4 ;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 314, 380);
+if((mouseX<=355 && mouseX>=285) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel10 =  270 - fireSelection3;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 174, 380);
+if((mouseX<=150 && mouseX>=80) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel10 =  270 - fireSelection2;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 34, 380);
+if((mouseX<=75 && mouseX>=5) && (mouseY<=390 && mouseY>=360)) {
+ rotationDegLevel10 =  270 - fireSelection1;}
+ 
+ 
+ textSize(20);
+fill(0);
+text("Level 10", 225, 25);
+
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel10-19.81));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level10, fireAtWillLevel10,7, 9);
+pop();
+
+textSize(10);
+text("(sin^-1(1/2))/-3  LIFT", 350, 460);
+text("9.81 ", 350, 480);
+fill(0);
+
+ if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)) {
+fireAtWillLevel10= fireAtWillLevel10 +speedVariableLevel10;}
+
+
+
+fill(255, 0, 0);
+ellipse(0, 0, 50, 50);
+fill(plane, planeColou, planeColour);
+ellipse(480, 127, 37.5, 6.25);
+arc(493, 125.5, 9, 10, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(472, 125, 16.25, 7.5, PI, TWO_PI);
+fill(0);
+rect(493, 120, 0.75, 5.75);
+rect(491.5, 123, 3.75, 0.75);
+fill(plane, planeColou, planeColour);
+triangle(469, 127.25, 490.5, 133.25, 495, 128.25);
+ 
+      if  ((fireAtWillLevel10<=462.5 && fireAtWillLevel10>=375.5)&& (rotationDegLevel10>=263.5 && rotationDegLevel10<=266)){
+speedVariableLevel10 = 0;}
+if  ((fireAtWillLevel10<=462.5 && fireAtWillLevel10>=375.5)&& (rotationDegLevel10>=263.5 && rotationDegLevel10<=266)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted10, levelCompleted10);
+levelCompleted10=levelCompleted10+3;
+if (levelCompleted10>=400){
+  fill(0);
+  textSize(40);
+  text("Level 10 Completed", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 0; // start menu
+}
+}}
+
+if  ((fireAtWillLevel10>=375.5)&& (rotationDegLevel10>=266 || rotationDegLevel10<=263.5)){
+speedVariableLevel10 = 0;}
+if  ((fireAtWillLevel10>=375.5)&& (rotationDegLevel10>=266 || rotationDegLevel10<=263.5)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted10, levelCompleted10);
+levelCompleted10=levelCompleted10+3;
+if (levelCompleted10>=400){
+  fill(0);
+  textSize(40);
+  text("Level 10 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)) {
+      state = 0; // start menu
+}
+}}
+ 
+  destroyerSetup();
+}
+
+void howToPlay(){
+background(154, 169, 214);
+fill(0);
+text("HOW TO PLAY",190, 20);
+textSize(10);
+text("1. FIND YOUR TARGET", 10, 50);
+text("---------> The aim of the game is to destroy the attacking German plane.", 10, 70);
+text("---------> Place the protractor on top of the artillery and match the plane to the degrees.", 10, 90);
+text("---------> Keep track of this number, it will be slightly modified but will be a base-number", 10, 110);
+text("2. FACTOR IN VARIABLES", 10, 130);
+text("---------> The bottom-right of the screen has variables such as windspeed and gravity", 10, 150);
+text("---------> Subtract wind speed from gravity to understand the net-lift or net-decline", 10, 170);
+text("---------> Add or subtract this net-lift / decline with the degrees you got from the protractor ", 10, 190);
+text("3. AIM AND FIRE YOUR ARTILLERY", 10, 210);
+text("---------> Type in the degrees (measurement - net-lift/decline) to the FIRE-BOX located under the boat ", 10, 230);
+text("---------> Once you type in the degrees, the gun will launch. Be vigilant  ", 10, 250);
+textSize(12);
+text("After you have launched the artillery, the following screen will appear  ", 42, 290);
+fill(0,255,0);
+rect(30, 330, 200, 100);
+fill(0);
+text("LEVEL COMPLETED", 80, 385);
+fill(255,0,0);
+rect(260, 330, 200, 100);
+fill(0);
+text("LEVEL FAILED", 305, 385);
+}
+void info(){
+background(255);
+}
+
+
+
+   
+
+
+
+void draw(){  
+   drawOpening();
+ 
+if (state == 0){
+    drawOpening();}
+if (state == 1){
+    gameLevel1();}
+if (state == 2){
+    howToPlay(); }
+if (state == 3){
+    info(); }
+if (state == 4){
+    gameLevel2(); }
+if (state == 5){
+    gameLevel3(); }
+if (state == 6){
+    gameLevel4(); }
+ if (state == 7){
+    gameLevel5(); }
+ if (state == 8){
+    gameLevel6(); }
+ if (state == 9){
+    gameLevel7(); }
+ if (state == 10){
+    gameLevel8(); }
+ if (state == 11){
+    gameLevel9(); }
+if (state == 12){
+    gameLevel0(); }
+}
+
+___________________________________________________________________________________________________________________________________________________________________________________________________
+import processing.sound.*;
+SoundFile song;
+
+String gameName = "Glory";
+float movingClouds = 250;
+float degreeSS = 0;
+float movingClouds2 = 450;
+float movingClouds3 = 0;
+float cloudSpeed = 1;
+float gunfire = 550;
+float currentGunLoco = random(-100, 100);
+float degreeVariable = 270;
+float fireAtWill = 5;
+float fireAtWill2 = 0;
+float speed = key;
+float plane = 128;
+float planeColou = 135;
+float planeColour = 130;
+float bastFire = 212 ;
+float bastFire2 = 207 ;
+float rotationDegLevel1 = 270;
+float speedVariable = 6;
+float levelCompleted = 50;
+float fireAtWillLevel2 = 5;
+float speedVariableLevel2 = 6;
+float rotationDegLevel2 = 270;
+
+float degreeSS2 = 0;
+float degreeSS3 = 0;
+float degreeSS4 = 0;
+float degreeSS5 = 0;
+float degreeSS6 = 0;
+float degreeSS7 = 0;
+float degreeSS8 = 0;
+float degreeSS9 = 0;
+float degreeSS10 = 0;
+float fireAtWill2Level2 = 0;
+float levelCompleted2 = 50;
+float rotationDegLevel3 = 270;
+float fireAtWill2Level3 = 0;
+float fireAtWillLevel3 = 5;
+float levelCompleted3 = 50;
+float speedVariableLevel3 = 6;
+float rotationDegLevel4 = 270;
+float fireAtWill2Level4 = 0;
+float fireAtWillLevel4 = 5;
+float levelCompleted4 = 50;
+float speedVariableLevel4 = 6;
+float rotationDegLevel5 = 267.5;
+float fireAtWill2Level5 = 0;
+float fireAtWillLevel5 = 5;
+float levelCompleted5 = 50;
+float speedVariableLevel5 = 6;
+float rotationDegLevel6 = 269.11;
+float fireAtWill2Level6 = 0;
+float fireAtWillLevel6 = 5;
+float levelCompleted6 = 50;
+float speedVariableLevel6 = 6;
+float rotationDegLevel7 = 278.81;
+float fireAtWill2Level7 = 0;
+float fireAtWillLevel7 = 5;
+float levelCompleted7 = 50;
+float speedVariableLevel7 = 6;
+float rotationDegLevel8 = 275.81;
+float fireAtWill2Level8 = 0;
+float fireAtWillLevel8 = 5;
+float levelCompleted8 = 50;
+float speedVariableLevel8 = 6;
+float rotationDegLevel9 = 269.91;
+float fireAtWill2Level9 = 0;
+float fireAtWillLevel9 = 5;
+float levelCompleted9 = 50;
+float speedVariableLevel9 = 6;
+float rotationDegLevel10 = 289.81;
+float fireAtWill2Level10 = 0;
+float fireAtWillLevel10 = 5;
+float levelCompleted10 = 50;
+float speedVariableLevel10 = 6;
+  float widthLoco = 200;
+  float widthSpeeda = 0.01;
+ float movingBackGroundShip = 200;
+ float shipSpeed = 5;
+ float time = 30000;
+    int fireSelection3 = 30;
+  int fireSelection2 = 50;
+  int fireSelection1 = 75;
+ int fireSelection4 = 90;
+
+int state;
+void setup(){
+  song = new SoundFile(this, "song.mp3");
+ song.loop();
+size(500, 500);
+
+}
+
+void resetArtilery(){
+
+  degreeSS=0;
+}
+void resetTime(){
+  time = 30000; 
+}
+
+void resetLevel1(){
+  rotationDegLevel1 = 270;
+   fireSelection3 = 30;
+ fireSelection2 = 50;
+  fireSelection1 = 75;
+  fireSelection4 = 90;
+  fireAtWill = 5;
+  speedVariable = 6;
+  levelCompleted = 50;
+}
+
+void resetLevel2(){
+ fireSelection3 = 15;
+  fireSelection2 = 30;
+   fireSelection1 = 60;
+ fireSelection4 = 80;
+ fireAtWillLevel2 = 5;
+ speedVariableLevel2 = 6;
+ rotationDegLevel2 = 270;
+ fireAtWill2Level2 = 0;
+ levelCompleted2 = 50;
+}
+void resetLevel3(){
+  fireSelection3 = 33;
+  fireSelection2 = 81;
+  fireSelection1 = 91;
+  fireSelection4 = 120;
+   rotationDegLevel3 = 270;
+ fireAtWill2Level3 = 0;
+ fireAtWillLevel3 = 5;
+ levelCompleted3 = 50;
+ speedVariableLevel3 = 6;
+ 
+}
+void resetLevel4(){
+    fireSelection3 = 28;
+   fireSelection2 = 54;
+   fireSelection1 = 65;
+  fireSelection4 = 41;
+   rotationDegLevel4 = 270;
+ fireAtWill2Level4 = 0;
+ fireAtWillLevel4 = 5;
+ levelCompleted4 = 50;
+ speedVariableLevel4 = 6;}
+void resetLevel5(){
+    fireSelection3 = 15;
+   fireSelection2 = 25;
+   fireSelection1 = 45;
+  fireSelection4 = 61;
+    rotationDegLevel5 = 267.5;
+ fireAtWill2Level5 = 0;
+ fireAtWillLevel5 = 5;
+ levelCompleted5 = 50;
+ speedVariableLevel5 = 6; 
+ }
+  void resetLevel6(){
+   fireSelection3 = 115;
+   fireSelection2 = 95;
+   fireSelection1 = 75;
+  fireSelection4 = 131;
+ rotationDegLevel6 = 269.11;
+ fireAtWill2Level6 = 0;
+ fireAtWillLevel6 = 5;
+ levelCompleted6 = 50;
+ speedVariableLevel6 = 6;  
+
+  }
+    void resetLevel7(){
+    fireSelection3 = 40;
+   fireSelection2 = 42;
+   fireSelection1 = 46;
+  fireSelection4 = 49;
+ rotationDegLevel7 = 278.81;
+ fireAtWill2Level7 = 0;
+ fireAtWillLevel7 = 5;
+ levelCompleted7 = 50;
+ speedVariableLevel7 = 6;
+}
+    void resetLevel8(){
+     fireSelection3 = 70;
+   fireSelection2 = 80;
+   fireSelection1 = 85;
+  fireSelection4 = 90;
+     rotationDegLevel8 = 275.81;
+ fireAtWill2Level8 = 0;
+ fireAtWillLevel8 = 5;
+ levelCompleted8 = 50;
+ speedVariableLevel8 = 6; 
+    }
+    void resetLevel9(){
+      fireSelection3 = 120;
+ fireSelection2 = 127;
+   fireSelection1 = 123;
+  fireSelection4 = 130;  
+    rotationDegLevel9 = 269.1;
+ fireAtWill2Level9 = 0;
+ fireAtWillLevel9 = 5;
+ levelCompleted9 = 50;
+ speedVariableLevel9 = 6;
+    }
+      void resetLevel10(){
+          fireSelection3 = 2;
+   fireSelection2 = 5;
+   fireSelection1 = 7;
+  fireSelection4 = 10;
+   rotationDegLevel10 = 270;
+ fireAtWill2Level10 = 0;
+ fireAtWillLevel10 = 5;
+ levelCompleted10 = 50;
+ speedVariableLevel10 = 6;    
+
+      }
+
+void backgroundShip(){
+ float movingBackGroundShip = 200;
+ float shipSpeed = 5;
+  fill(0);
+  rect(movingBackGroundShip+100, 295, 110, 10);
+  triangle(movingBackGroundShip+210, 295, movingBackGroundShip+210, 305, movingBackGroundShip+240, 293);
+   triangle(movingBackGroundShip+85, 295, movingBackGroundShip+100, 300, movingBackGroundShip+100, 295);
+   rect(movingBackGroundShip+168, 287, 20, 7);
+    rect(movingBackGroundShip+180, 289, 19, 3);
+    quad(movingBackGroundShip+110, 295, movingBackGroundShip+120, 280, movingBackGroundShip+165, 280,movingBackGroundShip+175, 295);
+   fill(0);
+  rect(movingBackGroundShip+138, 261, 4, 20);
+   rect(movingBackGroundShip+130, 272, 20, 4);
+   ellipse(movingBackGroundShip+140.5, 263, 10, 10);
+ movingBackGroundShip = movingBackGroundShip + shipSpeed;
+if (movingBackGroundShip > 600){
+movingBackGroundShip = 0;}
+ 
+}
+
+void manyClouds(){
+  cloudsForLevels(1, -100);
+cloudsForLevels(50, 20);
+cloudsForLevels(120, 70);
+cloudsForLevels(-20, 70);
+cloudsForLevels(120, -120);
+cloudsForLevels(1, -400);
+cloudsForLevels(50, -340);
+cloudsForLevels(120, -240);
+cloudsForLevels(-20, -270);
+cloudsForLevels(120, -320);
+cloudsForLevels(1, -400);
+cloudsForLevels(50, -540);
+cloudsForLevels(120, -640);
+cloudsForLevels(-20, -770);
+cloudsForLevels(120, -420);
+ 
+}
+
+void cloudsForLevels(float loco23, float widthLoco2){
+  fill(255);
+ noStroke();
+ ellipse(widthLoco+widthLoco2, 20+loco23, 25, 25);
+ ellipse(widthLoco+20+widthLoco2, 20+loco23, 25, 25);
+ ellipse(widthLoco+10+widthLoco2, 15+loco23, 10, 10);
+ ellipse(widthLoco-20+widthLoco2, 20+loco23, 25, 25);
+  ellipse(widthLoco+widthLoco2, 10+loco23, 25, 25);
+    ellipse(widthLoco+widthLoco2, 30+loco23, 25, 25);
+widthLoco = widthLoco + widthSpeeda;
+if (widthLoco >= 1300){
+widthLoco = -200;}
+ stroke(2);
+}
+
+void backgroundSimple(){
+fill(255);
+textSize(15);
+text("INFO", 363, 450);
+background(154, 169, 214);
+fill(0);
+textSize(20);
+fill(39, 63, 138);
+rect(0, 300, 500, 200);
+fill(255);
+rect(0, 400, 500, 100);
+}
+
+void destroyerSetup(){
+  fill(68, 117, 81);
+rect(0, 240, 10, 50);
+fill(110, 110, 115);
+rect(0, 250, 20, 10);
+fill(0);
+ellipse(5, 230, 25, 25);
+fill(110, 110, 115);
+rect(120, 275, 70, 15);
+fill(110, 110, 115);
+rect(0, 300, 200, 30);
+triangle(200,290,200,330,240,290);
+fill(68, 117, 81);
+rect(0, 290, 200, 10);
+fill(110, 110, 115);
+quad(-20, 289, 0, 274, 60, 274, 100, 289);
+fill(68, 117, 81);
+rect(0, 240, 10, 50);
+fill(110, 110, 115);
+rect(0, 250, 20, 10);
+fill(0);
+ellipse(5, 230, 25, 25);
+fill(110, 110, 115);
+rect(120, 275, 70, 15);
+fill(0);
+//Right Size Text
+fill(0);
+textSize(15);
+text("INFO:", 253, 430);
+fill(0);
+textSize(10);
+text("U (LIFT) = ", 253, 460);
+fill(0);
+textSize(10);
+text("g (GRAVITY) =  ", 253, 480);
+
+//Left Size Text
+fill(0);
+textSize(15);
+text("INPUT:", 3, 430);
+fill(0);
+rect(0, 400, 500, 5);
+fill(0);
+rect(243, 405, 5, 95);
+stroke(25);
+fill(255,0,0);
+rect(83, 435, 90, 30);
+fill(0);
+textSize(25);
+text("FIRE", 103, 459);
+ 
+}
+
+//Opening Screen
+void drawOpening() {
+ 
+textSize(width*0.2);
+background(50, 153, 168);
+noStroke();
+fill(255);
+//clouds
+ellipse(movingClouds, height*0.1818, width*0.2, height*0.2);
+ellipse(movingClouds + width*0.1, height*0.2181, width*0.2, height*0.2);
+ellipse(movingClouds + width*0.2, height*0.18181, width*0.2, height*0.2);
+ellipse(movingClouds2 +width*0.4, height*0.18181, width*0.24, height*0.2);
+ellipse(movingClouds2 + width*0.5, height*0.27272727, width*0.2, height*0.2);
+ellipse(movingClouds2 + width*0.6, height*0.23636, width*0.2, height*0.2);
+
+ellipse(movingClouds3 -400, 350, width*0.2, height*0.2);
+ellipse(movingClouds3 - 450, 350, width*0.2, height*0.2);
+ellipse(movingClouds3 - 500, 380, width*0.2, height*0.2);
+ellipse(movingClouds3 - 550, 350, width*0.24, height*0.2);
+ellipse(movingClouds3 - 600, 380, width*0.2, height*0.2);
+ellipse(movingClouds3 - 650, 350, width*0.2, height*0.2);
+
+movingClouds3 = movingClouds3 + cloudSpeed;
+if (movingClouds3 > 1200){
+movingClouds3 = -200;}
+
+movingClouds = movingClouds + cloudSpeed;
+if (movingClouds > 600){
+movingClouds = -200;}
+movingClouds2 = movingClouds2 + cloudSpeed;
+if (movingClouds2 > 700){
+movingClouds2 = -300;}
+//firefight
+fill(255, 0, 0);
+rect(currentGunLoco, gunfire, 10, 30);
+gunfire = gunfire - 20;
+if (gunfire < -1000){
+gunfire = 500;
+currentGunLoco = random(500);
+}
+if (currentGunLoco < -120){
+  currentGunLoco = 345;}
+if (currentGunLoco > 620){
+  currentGunLoco = 345;}
+//name (Buttons)
+fill(0);
+text(gameName, 120, 120);
+fill(255, 0, 0);
+rect(70, 450, 110, 40);
+textSize(15);
+fill(255);
+text("How To Play", 83, 475);
+fill(255, 0, 0);
+rect(200, 450, 110, 40);
+textSize(20);
+fill(255);
+text("LAUNCH", 213, 480);
+fill(255);
+ 
+fill(255, 0, 0);
+rect(330, 450, 110, 40);
+fill(255);
+text("INFO", 363, 480);
+stroke(2);
+fill(128, 135, 130);
+ellipse(250, 200, 400, 60);
+arc(399, 200, 100, 120, PI, TWO_PI);
+fill(212, 207, 207);
+arc(189, 190, 150, 80, PI, TWO_PI);
+fill(128, 135, 130);
+triangle(200, 210, 300, 290, 330, 210);
+fill(0);
+rect(393, 155, 10, 50);
+rect(373, 175, 50, 10);
+if(state==0)
+   if((mouseX<=310 && mouseX>=200) && (mouseY<=490 && mouseY>=450)&& (mousePressed)) {
+      state = 1; // start menu
+    }
+   else if((mouseX<=180 && mouseX>=70) && (mouseY<=490 && mouseY>=450)&& (mousePressed)) {
+      state = 2;
+    }
+   else if((mouseX<=440 && mouseX>=330) && (mouseY<=490 && mouseY>=450)&& (mousePressed)) {
+      state = 3;
+    }
+}
+void gameLevel1(){
+  fill(255);
+textSize(15);
+text("INFO", 363, 450);
+background(154, 169, 214);
+
+cloudsForLevels(1, -100);
+cloudsForLevels(50, 20);
+cloudsForLevels(120, 70);
+cloudsForLevels(-20, 70);
+cloudsForLevels(120, -120);
+cloudsForLevels(1, -400);
+cloudsForLevels(50, -340);
+cloudsForLevels(120, -240);
+cloudsForLevels(-20, -270);
+cloudsForLevels(120, -320);
+
+
+fill(0);
+textSize(20);
+text("LEVEL 1", 225, 25);
+fill(39, 63, 138);
+rect(0, 300, 500, 200);
+fill(255);
+rect(0, 400, 500, 100);
+
+
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 449, 380);
+
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 309, 380);
+
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 169, 380);
+
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 29, 380);
+
+if((mouseX<=degreeSS+495 && mouseX>=degreeSS+425) && (mouseY<=degreeSS+390 && mouseY>=degreeSS+360) && (mousePressed)) {
+ rotationDegLevel1 =  270 - fireSelection4 ;
+ degreeSS = 1000;
+}
+ if((mouseX<=degreeSS+75 && mouseX>=degreeSS+5) && (mouseY<=degreeSS+390 && mouseY>=degreeSS+360) && (mousePressed)) {
+ rotationDegLevel1 =  270 - fireSelection1;
+ degreeSS = 1000;}
+ if((mouseX<=degreeSS+215 && mouseX>=degreeSS+145) && (mouseY<=degreeSS+390 && mouseY>=degreeSS+360) && (mousePressed)) {
+ rotationDegLevel1 =  270 - fireSelection2;
+ degreeSS = 1000;}
+ if((mouseX<=degreeSS+355 && mouseX>=degreeSS+285) && (mouseY<=degreeSS+390 && mouseY>=degreeSS+360)&& (mousePressed)) {
+ rotationDegLevel1 =  270 - fireSelection3;
+ degreeSS = 1000;}
+
+
+//Artilery
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel1));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2, fireAtWill,7, 9);
+pop();
+
+//Planes
+fill(255, 0, 0);
+ellipse(0, 0, 100, 100);
+fill(plane, planeColou, planeColour);
+ellipse(250, 100, 150, 25);
+arc(305, 95, 30, 40, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(229, 95, 65, 30, PI, TWO_PI);
+fill(0);
+rect(303, 83, 3, 15);
+rect(297, 89, 15, 3);
+fill(plane, planeColou, planeColour);
+triangle(220, 105, 275, 125, 290, 105);
+
+
+
+mousePressed(); {
+
+if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)&& (mousePressed)) {
+fireAtWill= fireAtWill +speedVariable;}
+
+if  ((fireAtWill<=212.5 && fireAtWill>=180.5)&& (rotationDegLevel1<=222 && rotationDegLevel1>=190)){
+speedVariable = 0;}
+if  ((fireAtWill<=212.5 && fireAtWill>=180.5)&& (rotationDegLevel1<=222 && rotationDegLevel1>=190)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted, levelCompleted);
+levelCompleted=levelCompleted+3;
+if (levelCompleted>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 1 COMPLETED", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230) && (mousePressed)) {
+      state = 4; // start menu
+}
+}}
+if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435) && (mousePressed)) {
+fireAtWill= fireAtWill +speedVariable;}
+if  ((fireAtWill>=212.5)&& (rotationDegLevel1>=222 || rotationDegLevel1<=190)){
+speedVariable = 0;}
+if  ((fireAtWill>=212.5)&& (rotationDegLevel1>=222 || rotationDegLevel1<=190)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted, levelCompleted);
+levelCompleted=levelCompleted+3;
+if (levelCompleted>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 1 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 0;
+resetLevel1();
+resetTime();
+degreeSS = 0;
+      // start menu
+ 
+}
+}}
+
+
+ backgroundShip();
+destroyerSetup();
+gameTimer();
+}
+
+}
+
+
+void gameLevel2(){
+ backgroundSimple();
+ fill(0);
+textSize(20);
+
+
+
+cloudsForLevels(1, -100);
+cloudsForLevels(50, 20);
+cloudsForLevels(120, 70);
+cloudsForLevels(-20, 70);
+cloudsForLevels(120, -120);
+cloudsForLevels(1, -400);
+cloudsForLevels(50, -340);
+cloudsForLevels(120, -240);
+cloudsForLevels(-20, -270);
+cloudsForLevels(120, -320);
+ fill(0);
+text("LEVEL 2", 225, 25);
+
+
+ int fireSelection3 = 15;
+  int fireSelection2 = 30;
+  int fireSelection1 = 60;
+ int fireSelection4 = 80;
+
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 449, 380);
+if((mouseX<=degreeSS2+495 && mouseX>=degreeSS2+425) && (mouseY<=degreeSS2+390 && mouseY>=degreeSS2+360)&& (mousePressed)) {
+ rotationDegLevel2 =  270 - fireSelection4 ;
+ degreeSS2 = 1000;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 309, 380);
+if((mouseX<=degreeSS2+355 && mouseX>=degreeSS2+285) && (mouseY<=degreeSS2+390 && mouseY>=degreeSS2+360)&& (mousePressed)) {
+ rotationDegLevel2 =  270 - fireSelection3;
+ degreeSS2 = 1000;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 169, 380);
+if((mouseX<=degreeSS2+215 && mouseX>=degreeSS2+145) && (mouseY<=degreeSS2+390 && mouseY>=degreeSS2+360)&& (mousePressed)) {
+ rotationDegLevel2 =  270 - fireSelection2;
+ degreeSS2 = 1000;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 29, 380);
+if((mouseX<=degreeSS2+75 && mouseX>=degreeSS2+5) && (mouseY<=degreeSS2+390 && mouseY>=degreeSS2+360)&& (mousePressed)) {
+ rotationDegLevel2 =  270 - fireSelection1;
+ degreeSS2 = 1000;}
+ 
+
+ push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel2));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level2, fireAtWillLevel2,7, 9);
+pop();
+
+//Planes
+fill(255, 0, 0);
+ellipse(0, 0, 100, 100);
+fill(plane, planeColou, planeColour);
+ellipse(400, 200, 150, 25);
+arc(455, 195, 30, 40, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(379, 195, 65, 30, PI, TWO_PI);
+fill(0);
+rect(453, 183, 3, 15);
+rect(447, 189, 15, 3);
+fill(plane, planeColou, planeColour);
+triangle(370, 205, 425, 225, 440, 205);
+
+
+
+
+
+mousePressed(); {
+if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)&& (mousePressed)) {
+fireAtWillLevel2 = fireAtWillLevel2 + speedVariableLevel2;}}
+if  ((fireAtWillLevel2>=260.5 && fireAtWillLevel2<=280.5)&& (rotationDegLevel2>=246 && rotationDegLevel2<=257)){
+speedVariableLevel2 = 0;}
+if  ((fireAtWillLevel2>=260.5 && fireAtWillLevel2<=280.5)&& (rotationDegLevel2>=246 && rotationDegLevel2<=257)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted2, levelCompleted2);
+levelCompleted2=levelCompleted2+3;
+if (levelCompleted2>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 2 COMPLETED", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 5;
+ 
+}
+}}
+
+if  ((fireAtWillLevel2>=260.5)&& (rotationDegLevel2<=246 || rotationDegLevel2>257)){
+speedVariable = 0;}
+if  ((fireAtWillLevel2>=260.5)&& (rotationDegLevel2<=246 || rotationDegLevel2>257)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted2, levelCompleted2);
+levelCompleted2=levelCompleted2+3;
+    if (levelCompleted2>=400){
+  fill(0);
+  textSize(40);
+  text("Level 2 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 0; // start menu
+      resetTime();
+      resetLevel1();
+      resetLevel2();
+      degreeSS2 = 0;
+      degreeSS = 0;
+}
+}}
+destroyerSetup();
+backgroundShip();
+gameTimer();}
+
+void gameLevel3(){
+  backgroundSimple();
+
+
+
+cloudsForLevels(1, -100);
+cloudsForLevels(50, 20);
+cloudsForLevels(120, 70);
+cloudsForLevels(-20, 70);
+cloudsForLevels(120, -120);
+cloudsForLevels(1, -400);
+cloudsForLevels(50, -340);
+cloudsForLevels(120, -240);
+cloudsForLevels(-20, -270);
+cloudsForLevels(120, -320);
+
+   fill(0);
+textSize(20);
+text("LEVEL 3", 225, 25);
+
+ int fireSelection3 = 33;
+  int fireSelection2 = 81;
+  int fireSelection1 = 91;
+ int fireSelection4 = 120;
+
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 449, 380);
+if((mouseX<=degreeSS3+495 && mouseX>=degreeSS3+425) && (mouseY<=degreeSS3+390 && mouseY>=degreeSS3+360)&& (mousePressed)) {
+ rotationDegLevel3 =  270 - fireSelection4 ;
+ degreeSS3 = 1000;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 309, 380);
+if((mouseX<=degreeSS3+355 && mouseX>=degreeSS3+285) && (mouseY<=degreeSS3+390 && mouseY>=degreeSS3+360)&& (mousePressed)) {
+ rotationDegLevel3 =  270 - fireSelection3;
+ degreeSS3 = 1000;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 169, 380);
+if((mouseX<=degreeSS3+215 && mouseX>=degreeSS3+145) && (mouseY<=degreeSS3+390 && mouseY>=degreeSS3+360)&& (mousePressed)) {
+ rotationDegLevel3 =  270 - fireSelection2;
+ degreeSS3 = 1000;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 29, 380);
+if((mouseX<=degreeSS3+75 && mouseX>=degreeSS3+5) && (mouseY<=degreeSS3+390 && mouseY>=degreeSS3+360)&& (mousePressed)) {
+ rotationDegLevel3 =  270 - fireSelection1;
+ degreeSS3 = 1000;}
+
+
+ push();
+ 
+ mousePressed(); {
+
+if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)&& (mousePressed)) {
+fireAtWillLevel3= fireAtWillLevel3 +speedVariableLevel3;}
+
+if  ((fireAtWillLevel3<=282.5 && fireAtWillLevel3>=230.5)&& (rotationDegLevel3<=185 && rotationDegLevel3>=173)){
+speedVariableLevel3 = 0;}
+if  ((fireAtWillLevel3<=282.5 && fireAtWillLevel3>=230.5)&& (rotationDegLevel3<=185 && rotationDegLevel3>=173)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted3, levelCompleted3);
+levelCompleted3=levelCompleted3+3;
+if (levelCompleted3>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 3 COMPLETED", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 6; // start menu
+}
+}}
+if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)&& (mousePressed)) {
+fireAtWillLevel3= fireAtWillLevel3 +speedVariableLevel3;}
+if  ((fireAtWillLevel3>=282.5)&& (rotationDegLevel3>=185 || rotationDegLevel3<=173)){
+speedVariableLevel3 = 0;}
+if  ((fireAtWillLevel3>=282.5)&& (rotationDegLevel3>=185 || rotationDegLevel3<=173)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted3, levelCompleted3);
+levelCompleted3=levelCompleted3+3;
+if (levelCompleted3>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 3 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 0; // start menu
+      resetTime();
+      resetLevel1();
+      resetLevel2();
+      resetLevel3();
+      degreeSS3 = 0;
+       degreeSS2 = 0;
+      degreeSS = 0;
+ 
+}
+}}}
+ 
+
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel3));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level3, fireAtWillLevel3,7, 9);
+pop();
+
+//Planes
+fill(255, 0, 0);
+ellipse(0, 0, 100, 100);
+fill(plane, planeColou, planeColour);
+ellipse(140, 47, 75, 12.5);
+arc(167, 45, 15, 20, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(129, 45, 32.5, 15, PI, TWO_PI);
+fill(0);
+rect(166, 40, 1.5, 7.5);
+rect(163, 43, 7.5, 1.5);
+fill(plane, planeColou, planeColour);
+triangle(128, 50.5, 155.5, 60.5, 163, 50.5);
+
+ destroyerSetup();
+ backgroundShip();
+ gameTimer();
+}
+
+void gameLevel4(){
+   backgroundSimple();
+cloudsForLevels(1, -100);
+cloudsForLevels(50, 20);
+cloudsForLevels(120, 70);
+cloudsForLevels(-20, 70);
+cloudsForLevels(120, -120);
+cloudsForLevels(1, -400);
+cloudsForLevels(50, -340);
+cloudsForLevels(120, -240);
+cloudsForLevels(-20, -270);
+cloudsForLevels(120, -320);
+
+
+
+   int fireSelection3 = 28;
+  int fireSelection2 = 54;
+  int fireSelection1 = 65;
+ int fireSelection4 = 41;
+
+    fill(0);
+textSize(20);
+text("LEVEL 4", 225, 25);
+
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 449, 380);
+if((mouseX<=degreeSS4+495 && mouseX>=degreeSS4+425) && (mouseY<=degreeSS4+390 && mouseY>=degreeSS4+360)&& (mousePressed)) {
+ rotationDegLevel4 =  270 - fireSelection4 ;
+ degreeSS4=1000;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 309, 380);
+if((mouseX<=degreeSS4+355 && mouseX>=degreeSS4+285) && (mouseY<=degreeSS4+390 && mouseY>=degreeSS4+360)&& (mousePressed)) {
+ rotationDegLevel4 =  270 - fireSelection3;
+ degreeSS4=1000;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 169, 380);
+if((mouseX<=degreeSS4+215 && mouseX>=degreeSS4+145) && (mouseY<=degreeSS4+390 && mouseY>=degreeSS4+360)&& (mousePressed)) {
+ rotationDegLevel4 =  270 - fireSelection2;
+ degreeSS4=1000;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 29, 380);
+if((mouseX<=degreeSS4+75 && mouseX>=degreeSS4+5) && (mouseY<=degreeSS4+390 && mouseY>=degreeSS4+360)&& (mousePressed)) {
+ rotationDegLevel4 =  270 - fireSelection1;
+ degreeSS4=1000;}
+
+
+
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel4));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level4, fireAtWillLevel4,7, 9);
+pop();
+
+   //Planes
+fill(255, 0, 0);
+ellipse(0, 0, 100, 100);
+fill(plane, planeColou, planeColour);
+ellipse(440, 47, 75, 12.5);
+arc(467, 45, 15, 20, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(429, 45, 32.5, 15, PI, TWO_PI);
+fill(0);
+rect(466, 40, 1.5, 7.5);
+rect(463, 43, 7.5, 1.5);
+fill(plane, planeColou, planeColour);
+triangle(428, 50.5, 455.5, 60.5, 463, 50.5);
+
+if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)&& (mousePressed)) {
+fireAtWillLevel4= fireAtWillLevel4 +speedVariableLevel4;}
+
+if  ((fireAtWillLevel4<=482.5 && fireAtWillLevel4>=347.5)&& (rotationDegLevel4<=233.5 && rotationDegLevel4>=227.5)){
+speedVariableLevel4 = 0;}
+if  ((fireAtWillLevel4<=482.5 && fireAtWillLevel4>=347.5)&& (rotationDegLevel4<=233.5 && rotationDegLevel4>=227.5)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted4, levelCompleted4);
+levelCompleted4=levelCompleted4+3;
+if (levelCompleted4>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 4 COMPLETED", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 7; // start menu
+}
+}}
+if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)&& (mousePressed)) {
+fireAtWillLevel4= fireAtWillLevel4 +speedVariableLevel4;}
+if  ((fireAtWillLevel4>=382.5)&& (rotationDegLevel4>=233.5 || rotationDegLevel4<=227.5)){
+speedVariableLevel4 = 0;}
+if  ((fireAtWillLevel4>=382.5)&& (rotationDegLevel4>=233.5 || rotationDegLevel4<=227.5)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted4, levelCompleted4);
+levelCompleted4=levelCompleted4+3;
+if (levelCompleted4>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 4 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 0; // start menu
+      resetTime();
+      resetLevel1();
+      resetLevel2();
+      resetLevel3();
+      resetLevel4();
+      degreeSS4 = 0;
+      degreeSS3 = 0;
+       degreeSS2 = 0;
+      degreeSS = 0;
+ 
+}
+}}
+destroyerSetup();
+backgroundShip();
+gameTimer();}
+void gameLevel5(){
+   
+  backgroundSimple();
+
+
+
+cloudsForLevels(1, -100);
+cloudsForLevels(50, 20);
+cloudsForLevels(120, 70);
+cloudsForLevels(-20, 70);
+cloudsForLevels(120, -120);
+cloudsForLevels(1, -400);
+cloudsForLevels(50, -340);
+cloudsForLevels(120, -240);
+cloudsForLevels(-20, -270);
+cloudsForLevels(120, -320);
+
+     fill(0);
+textSize(20);
+text("LEVEL 5", 225, 25);
+int fireSelection3 = 15;
+  int fireSelection2 = 25;
+  int fireSelection1 = 45;
+ int fireSelection4 = 61;
+
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 449, 380);
+if((mouseX<=degreeSS5+495 && mouseX>=degreeSS5+425) && (mouseY<=degreeSS5+390 && mouseY>=degreeSS5+360)&& (mousePressed)) {
+ rotationDegLevel5 =  270 - fireSelection4 ;
+ degreeSS5=1000;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 309, 380);
+if((mouseX<=degreeSS5+355 && mouseX>=degreeSS5+285) && (mouseY<=degreeSS5+390 && mouseY>=degreeSS5+360)&& (mousePressed)) {
+ rotationDegLevel5 =  270 - fireSelection3;
+ degreeSS5=1000;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 169, 380);
+if((mouseX<=degreeSS5+215 && mouseX>=degreeSS5+145) && (mouseY<=degreeSS5+390 && mouseY>=degreeSS5+360)&& (mousePressed)) {
+ rotationDegLevel5 =  270 - fireSelection2;
+ degreeSS5=1000;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 29, 380);
+if((mouseX<=degreeSS5+75 && mouseX>=degreeSS5+5) && (mouseY<=degreeSS5+390 && mouseY>=degreeSS5+360)&& (mousePressed)) {
+ rotationDegLevel5 =  270 - fireSelection1;
+ degreeSS5=1000;}
+
+
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel5+2.5));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level5, fireAtWillLevel5,7, 9);
+pop();
+ 
+ 
+ 
+  //plane
+fill(255, 0, 0);
+ellipse(0, 0, 100, 100);
+fill(plane, planeColou, planeColour);
+ellipse(440, 167, 75, 12.5);
+arc(467, 165, 15, 20, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(429, 165, 32.5, 15, PI, TWO_PI);
+fill(0);
+rect(466, 160, 1.5, 7.5);
+rect(463, 163, 7.5, 1.5);
+fill(plane, planeColou, planeColour);
+triangle(428, 170.5, 455.5, 180.5, 463, 170.5);
+ 
+  if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)&& (mousePressed)) {
+fireAtWillLevel5= fireAtWillLevel5 +speedVariableLevel5;}
+ 
+
+if  ((fireAtWillLevel5<=462.5 && fireAtWillLevel5>=305.5)&& (rotationDegLevel5>=243 && rotationDegLevel5<=247.8)){
+speedVariableLevel5 = 0;}
+if  ((fireAtWillLevel5<=462.5 && fireAtWillLevel5>=305.5)&& (rotationDegLevel5>=243 && rotationDegLevel5<=247.8)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted5, levelCompleted5);
+levelCompleted5=levelCompleted5+3;
+if (levelCompleted5>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 5 COMPLETED", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 8; // start menu
+}
+}}
+
+if  ((fireAtWillLevel5>=305.5)&& (rotationDegLevel5>=247.8 || rotationDegLevel5<=243)){
+speedVariableLevel5 = 0;}
+if  ((fireAtWillLevel5>=305.5)&& (rotationDegLevel5>=247.8 || rotationDegLevel5<=243)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted5, levelCompleted5);
+levelCompleted5=levelCompleted5+3;
+if (levelCompleted5>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 5 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 0; // start menu
+      resetTime();
+      resetLevel1();
+      resetLevel2();
+      resetLevel3();
+      resetLevel4();
+      resetLevel5();
+      degreeSS5 = 0;
+       degreeSS4 = 0;
+      degreeSS3 = 0;
+       degreeSS2 = 0;
+      degreeSS = 0;
+}
+}}
+destroyerSetup();
+textSize(10);
+text("2.5 LIFT", 350, 460);
+fill(0);
+backgroundShip();
+gameTimer();
+}
+ 
+void  gameLevel6(){
+   backgroundSimple();
+
+cloudsForLevels(1, -100);
+cloudsForLevels(50, 20);
+cloudsForLevels(120, 70);
+cloudsForLevels(-20, 70);
+cloudsForLevels(120, -120);
+cloudsForLevels(1, -400);
+cloudsForLevels(50, -340);
+cloudsForLevels(120, -240);
+cloudsForLevels(-20, -270);
+cloudsForLevels(120, -320);
+
+        fill(0);
+textSize(20);
+text("LEVEL 6", 225, 25);
+
+int fireSelection3 = 115;
+  int fireSelection2 = 95;
+  int fireSelection1 = 75;
+ int fireSelection4 = 131;
+
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 449, 380);
+if((mouseX<=degreeSS6+495 && mouseX>=degreeSS6+425) && (mouseY<=degreeSS6+390 && mouseY>=degreeSS6+360)&& (mousePressed)) {
+ rotationDegLevel6 =  270 - fireSelection4 ;
+ degreeSS6 = 1000;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 309, 380);
+if((mouseX<=degreeSS6+355 && mouseX>=degreeSS6+285) && (mouseY<=degreeSS6+390 && mouseY>=degreeSS6+360)&& (mousePressed)) {
+ rotationDegLevel6 =  270 - fireSelection3;
+ degreeSS6 = 1000;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 169, 380);
+if((mouseX<=degreeSS6+215 && mouseX>=degreeSS6+145) && (mouseY<=degreeSS6+390 && mouseY>=degreeSS6+360)&& (mousePressed)) {
+ rotationDegLevel6 =  270 - fireSelection2;
+ degreeSS6 = 1000;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 29, 380);
+if((mouseX<=degreeSS6+75 && mouseX>=degreeSS6+5) && (mouseY<=degreeSS6+390 && mouseY>=degreeSS6+360)&& (mousePressed)) {
+ rotationDegLevel6 =  270 - fireSelection1;
+ degreeSS6 = 1000;}
+
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel6+0.89));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level6, fireAtWillLevel6,7, 9);
+pop();
+
+fill(255, 0, 0);
+ellipse(0, 0, 100, 100);
+fill(plane, planeColou, planeColour);
+ellipse(40, 67, 75, 12.5);
+arc(67, 65, 15, 20, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(29, 65, 32.5, 15, PI, TWO_PI);
+fill(0);
+rect(66, 60, 1.5, 7.5);
+rect(63, 63, 7.5, 1.5);
+fill(plane, planeColou, planeColour);
+triangle(28, 70.5, 55.5, 80.5, 63, 70.5);
+
+textSize(10);
+text("10.7 LIFT", 350, 460);
+text("9.81 ", 350, 480);
+fill(0);
+ 
+  if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)&& (mousePressed)) {
+fireAtWillLevel6= fireAtWillLevel6 +speedVariableLevel6;}
+ 
+  if  ((fireAtWillLevel6<=462.5 && fireAtWillLevel6>=230.5)&& (rotationDegLevel6>=147 && rotationDegLevel6<=161)){
+speedVariableLevel6 = 0;}
+if  ((fireAtWillLevel6<=462.5 && fireAtWillLevel6>=230.5)&& (rotationDegLevel6>=147 && rotationDegLevel6<=161)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted6, levelCompleted6);
+levelCompleted6=levelCompleted6+3;
+if (levelCompleted6>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 6 COMPLETED", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 9; // start menu
+}
+}}
+
+if  ((fireAtWillLevel6>=230.5)&& (rotationDegLevel6>=161 || rotationDegLevel6<=147)){
+speedVariableLevel6 = 0;}
+if  ((fireAtWillLevel6>=230.5)&& (rotationDegLevel6>=161 || rotationDegLevel6<=147)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted6, levelCompleted6);
+levelCompleted6=levelCompleted6+3;
+if (levelCompleted6>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 6 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 0; // start menu
+      resetTime();
+      resetLevel1();
+      resetLevel2();
+      resetLevel3();
+      resetLevel4();
+      resetLevel5();
+      resetLevel6();
+      degreeSS6 = 0;
+       degreeSS5 = 0;
+       degreeSS4 = 0;
+      degreeSS3 = 0;
+       degreeSS2 = 0;
+      degreeSS = 0;
+}
+}}
+destroyerSetup();
+textSize(10);
+text("10.7 LIFT", 350, 460);
+text("9.81 ", 350, 480);
+fill(0);
+backgroundShip();
+gameTimer();}
+
+void gameLevel7(){
+  backgroundSimple();
+
+cloudsForLevels(1, -100);
+cloudsForLevels(50, 20);
+cloudsForLevels(120, 70);
+cloudsForLevels(-20, 70);
+cloudsForLevels(120, -120);
+cloudsForLevels(1, -400);
+cloudsForLevels(50, -340);
+cloudsForLevels(120, -240);
+cloudsForLevels(-20, -270);
+cloudsForLevels(120, -320);
+
+  textSize(20);
+  fill(0);
+text("LEVEL 7", 225, 25);
+
+int fireSelection3 = 40;
+  int fireSelection2 = 42;
+  int fireSelection1 = 46;
+ int fireSelection4 = 49;
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 449, 380);
+if((mouseX<=degreeSS7+495 && mouseX>=degreeSS7+425) && (mouseY<=degreeSS7+390 && mouseY>=degreeSS7+360)&& (mousePressed)) {
+ rotationDegLevel7 =  270 - fireSelection4 ;
+ degreeSS7 = 1000;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 309, 380);
+if((mouseX<=degreeSS7+355 && mouseX>=degreeSS7+285) && (mouseY<=degreeSS7+390 && mouseY>=degreeSS7+360)&& (mousePressed)) {
+ rotationDegLevel7 =  270 - fireSelection3;
+ degreeSS7 = 1000;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 169, 380);
+if((mouseX<=degreeSS7+215 && mouseX>=degreeSS7+145) && (mouseY<=degreeSS7+390 && mouseY>=degreeSS7+360)&& (mousePressed)) {
+ rotationDegLevel7 =  270 - fireSelection2;
+ degreeSS7 = 1000;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 29, 380);
+if((mouseX<=degreeSS7+75 && mouseX>=degreeSS7+5) && (mouseY<=degreeSS7+390 && mouseY>=degreeSS7+360)&& (mousePressed)) {
+ rotationDegLevel7 =  270 - fireSelection1;
+ degreeSS7 = 1000;}
+
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel7-8.81));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level7, fireAtWillLevel7,7, 9);
+pop();
+fill(0);
+textSize(10);
+text("(45L / 7)+ 3 = 8      ", 350, 460);
+text("9.81 ", 350, 480);
+fill(0);
+
+
+fill(255, 0, 0);
+ellipse(0, 0, 50, 50);
+fill(plane, planeColou, planeColour);
+ellipse(340, 67, 37.5, 6.25);
+arc(353, 65.5, 9, 10, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(332, 65, 16.25, 7.5, PI, TWO_PI);
+fill(0);
+rect(353, 60, 0.75, 5.75);
+rect(351.5, 63, 3.75, 0.75);
+fill(plane, planeColou, planeColour);
+triangle(329, 67.25, 350.5, 73.25, 355, 68.25);
+
+
+ 
+  if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)&& (mousePressed)) {
+fireAtWillLevel7= fireAtWillLevel7 +speedVariableLevel7;}
+
+
+  if  ((fireAtWillLevel7<=462.5 && fireAtWillLevel7>=285.5)&& (rotationDegLevel7>=228 && rotationDegLevel7<=232)){
+speedVariableLevel7 = 0;}
+if  ((fireAtWillLevel7<=462.5 && fireAtWillLevel7>=285.5)&& (rotationDegLevel7>=226 && rotationDegLevel7<=232)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted7, levelCompleted7);
+levelCompleted7=levelCompleted7+3;
+if (levelCompleted7>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 7 COMPLETED", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 10; // start menu
+}
+}}
+
+if  ((fireAtWillLevel7>=285.5)&& (rotationDegLevel7>=232 || rotationDegLevel7<=228)){
+speedVariableLevel7 = 0;}
+if  ((fireAtWillLevel7>=285.5)&& (rotationDegLevel7>=232 || rotationDegLevel7<=228)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted7, levelCompleted7);
+levelCompleted7=levelCompleted7+3;
+if (levelCompleted7>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 7 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 0; // start menu
+      resetTime();
+       resetLevel1();
+      resetLevel2();
+      resetLevel3();
+      resetLevel4();
+      resetLevel5();
+      resetLevel6();
+      resetLevel7();
+      degreeSS7 = 0;
+       degreeSS6 = 0;
+       degreeSS5 = 0;
+       degreeSS4 = 0;
+      degreeSS3 = 0;
+       degreeSS2 = 0;
+      degreeSS = 0;
+}
+}}
+textSize(10);
+text("(45L / 7)+ 3 = 8      LIFT", 350, 460);
+text("9.81 ", 350, 480);
+    destroyerSetup();
+    backgroundShip();
+    gameTimer();
+}
+
+void gameLevel8(){
+   backgroundSimple();
+
+
+cloudsForLevels(1, -100);
+cloudsForLevels(50, 20);
+cloudsForLevels(120, 70);
+cloudsForLevels(-20, 70);
+cloudsForLevels(120, -120);
+cloudsForLevels(1, -400);
+cloudsForLevels(50, -340);
+cloudsForLevels(120, -240);
+cloudsForLevels(-20, -270);
+cloudsForLevels(120, -320);
+
+    textSize(20);
+  fill(0);
+text("LEVEL 8", 225, 25);
+int fireSelection3 = 70;
+  int fireSelection2 = 80;
+  int fireSelection1 = 85;
+ int fireSelection4 = 90;
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 449, 380);
+if((mouseX<=degreeSS8+495 && mouseX>=degreeSS8+425) && (mouseY<=degreeSS8+390 && mouseY>=degreeSS8+360)&& (mousePressed)) {
+ rotationDegLevel8 =  270 - fireSelection4 ;
+ degreeSS8=1000;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 309, 380);
+if((mouseX<=degreeSS8+355 && mouseX>=degreeSS8+285) && (mouseY<=degreeSS8+390 && mouseY>=degreeSS8+360)&& (mousePressed)) {
+ rotationDegLevel8 =  270 - fireSelection3;
+ degreeSS8=1000;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 169, 380);
+if((mouseX<=degreeSS8+215 && mouseX>=degreeSS8+145) && (mouseY<=degreeSS8+390 && mouseY>=degreeSS8+360)&& (mousePressed)) {
+ rotationDegLevel8 =  270 - fireSelection2;
+ degreeSS8=1000;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 29, 380);
+if((mouseX<=degreeSS8+75 && mouseX>=degreeSS8+5) && (mouseY<=degreeSS8+390 && mouseY>=degreeSS8+360)&& (mousePressed)) {
+ rotationDegLevel8 =  270 - fireSelection1;
+ degreeSS8=1000;}
+
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel8-5.81));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level8, fireAtWillLevel8,7, 9);
+pop();
+
+
+
+
+fill(255, 0, 0);
+ellipse(0, 0, 50, 50);
+fill(plane, planeColou, planeColour);
+ellipse(140, 67, 37.5, 6.25);
+arc(153, 65.5, 9, 10, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(132, 65, 16.25, 7.5, PI, TWO_PI);
+fill(0);
+rect(153, 60, 0.75, 5.75);
+rect(151.5, 63, 3.75, 0.75);
+fill(plane, planeColou, planeColour);
+triangle(129, 67.25, 150.5, 73.25, 155, 68.25);
+   
+     if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)&& (mousePressed)) {
+fireAtWillLevel8= fireAtWillLevel8 +speedVariableLevel8;}
+   
+     if  ((fireAtWillLevel8<=462.5 && fireAtWillLevel8>=205.5)&& (rotationDegLevel8>=180 && rotationDegLevel8<=188)){
+speedVariableLevel8 = 0;}
+if  ((fireAtWillLevel8<=462.5 && fireAtWillLevel8>=205.5)&& (rotationDegLevel8>=180 && rotationDegLevel8<=188)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted8, levelCompleted8);
+levelCompleted8=levelCompleted8+3;
+if (levelCompleted8>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 8 COMPLETED", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 11; // start menu
+}
+}}
+
+if  ((fireAtWillLevel8>=205.5)&& (rotationDegLevel8>=188 || rotationDegLevel8<=180)){
+speedVariableLevel8 = 0;}
+if  ((fireAtWillLevel8>=205.5)&& (rotationDegLevel8>=188 || rotationDegLevel8<=180)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted8, levelCompleted8);
+levelCompleted8=levelCompleted8+3;
+if (levelCompleted8>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 8 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 0; // start menu
+      resetTime();
+         resetLevel1();
+      resetLevel2();
+      resetLevel3();
+      resetLevel4();
+      resetLevel5();
+      resetLevel6();
+      resetLevel7();
+      resetLevel8();
+      degreeSS8 = 0;
+ degreeSS7 = 0;
+       degreeSS6 = 0;
+       degreeSS5 = 0;
+       degreeSS4 = 0;
+      degreeSS3 = 0;
+       degreeSS2 = 0;
+      degreeSS = 0;
+}
+}}
+textSize(10);
+text("((sin(90)x4))+cos(90))  LIFT", 350, 460);
+text("9.81 ", 350, 480);
+fill(0);
+  destroyerSetup();
+  backgroundShip();
+  gameTimer();
+}
+
+void gameLevel9(){
+   backgroundSimple();
+   
+  cloudsForLevels(1, -100);
+cloudsForLevels(50, 20);
+cloudsForLevels(120, 70);
+cloudsForLevels(-20, 70);
+cloudsForLevels(120, -120);
+cloudsForLevels(1, -400);
+cloudsForLevels(50, -340);
+cloudsForLevels(120, -240);
+cloudsForLevels(-20, -270);
+cloudsForLevels(120, -320);
+ 
+ 
+       textSize(20);
+  fill(0);
+text("LEVEL 9", 225, 25);
+   int fireSelection3 = 120;
+  int fireSelection2 = 127;
+  int fireSelection1 = 123;
+ int fireSelection4 = 130;
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 449, 380);
+if((mouseX<=degreeSS9+495 && mouseX>=degreeSS9+425) && (mouseY<=degreeSS9+390 && mouseY>=degreeSS9+360)&& (mousePressed)) {
+ rotationDegLevel9 =  270 - fireSelection4 ;
+ degreeSS9=1000;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 309, 380);
+if((mouseX<=degreeSS9+355 && mouseX>=degreeSS9+285) && (mouseY<=degreeSS9+390 && mouseY>=degreeSS9+360)&& (mousePressed)) {
+ rotationDegLevel9 =  270 - fireSelection3;
+ degreeSS9=1000;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 169, 380);
+if((mouseX<=degreeSS9+215 && mouseX>=degreeSS9+145) && (mouseY<=degreeSS9+390 && mouseY>=degreeSS9+360)&& (mousePressed)) {
+ rotationDegLevel9 =  270 - fireSelection2;
+ degreeSS9=1000;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 29, 380);
+if((mouseX<=degreeSS9+75 && mouseX>=degreeSS9+5) && (mouseY<=degreeSS9+390 && mouseY>=degreeSS9+360)&& (mousePressed)) {
+ rotationDegLevel9 =  270 - fireSelection1;
+ degreeSS9=1000;}
+
+        textSize(20);
+  fill(0);
+text("LEVEL 9", 225, 25);
+
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel9+0.09));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level9, fireAtWillLevel9,7, 9);
+pop();
+
+textSize(10);
+text("(csc^2(x)-cot^2(x))9.9  LIFT", 350, 460);
+text("9.81 ", 350, 480);
+fill(0);
+
+
+fill(255, 0, 0);
+ellipse(0, 0, 50, 50);
+fill(plane, planeColou, planeColour);
+ellipse(10, 127, 37.5, 6.25);
+arc(23, 125.5, 9, 10, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(2, 125, 16.25, 7.5, PI, TWO_PI);
+fill(0);
+rect(23, 120, 0.75, 5.75);
+rect(21.5, 123, 3.75, 0.75);
+fill(plane, planeColou, planeColour);
+triangle(-1, 127.25, 20.5, 133.25, 25, 128.25);
+
+     if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)&& (mousePressed)) {
+fireAtWillLevel9= fireAtWillLevel9 +speedVariableLevel9;}
+
+     if  ((fireAtWillLevel9<=462.5 && fireAtWillLevel9>=205.5)&& (rotationDegLevel9>=137 && rotationDegLevel9<=143)){
+speedVariableLevel9 = 0;}
+if  ((fireAtWillLevel9<=462.5 && fireAtWillLevel9>=205.5)&& (rotationDegLevel9>=137 && rotationDegLevel9<=143)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted9, levelCompleted9);
+levelCompleted9=levelCompleted9+3;
+if (levelCompleted9>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 9 COMPLETED", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 12; // start menu
+}
+}}
+
+if  ((fireAtWillLevel9>=205.5)&& (rotationDegLevel9>=143 || rotationDegLevel9<=137)){
+speedVariableLevel9 = 0;}
+if  ((fireAtWillLevel9>=205.5)&& (rotationDegLevel9>=143 || rotationDegLevel9<=137)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted9, levelCompleted9);
+levelCompleted9=levelCompleted9+3;
+if (levelCompleted9>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 9 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 0; // start menu
+      resetTime();
+            resetLevel1();
+      resetLevel2();
+      resetLevel3();
+      resetLevel4();
+      resetLevel5();
+      resetLevel6();
+      resetLevel7();
+      resetLevel8();
+      resetLevel9();
+      degreeSS9 = 0;
+ degreeSS8 = 0;
+ degreeSS7 = 0;
+       degreeSS6 = 0;
+       degreeSS5 = 0;
+       degreeSS4 = 0;
+      degreeSS3 = 0;
+       degreeSS2 = 0;
+      degreeSS = 0;
+}
+}}
+
+  destroyerSetup();
+  backgroundShip();
+  gameTimer();
+}
+
+void gameLevel0(){
+   backgroundSimple();
+   
+   
+   
+   cloudsForLevels(1, -100);
+cloudsForLevels(50, 20);
+cloudsForLevels(120, 70);
+cloudsForLevels(-20, 70);
+cloudsForLevels(120, -120);
+cloudsForLevels(1, -400);
+cloudsForLevels(50, -340);
+cloudsForLevels(120, -240);
+cloudsForLevels(-20, -270);
+cloudsForLevels(120, -320);
+
+       textSize(20);
+  fill(0);
+text("Level 10", 225, 25);
+   int fireSelection3 = 2;
+  int fireSelection2 = 5;
+  int fireSelection1 = 7;
+ int fireSelection4 = 10;
+//Boxes
+//4
+fill(0);
+rect(425, 360, 70, 30);
+fill(255);
+text(fireSelection4, 449, 380);
+if((mouseX<=degreeSS10+495 && mouseX>=degreeSS10+425) && (mouseY<=degreeSS10+390 && mouseY>=degreeSS10+360)&& (mousePressed)) {
+ rotationDegLevel10 =  270 - fireSelection4 ;
+ degreeSS10=1000;}
+
+//3
+fill(0);
+rect(285, 360, 70, 30);
+fill(255);
+text(fireSelection3, 309, 380);
+if((mouseX<=degreeSS10+355 && mouseX>=degreeSS10+285) && (mouseY<=degreeSS10+390 && mouseY>=degreeSS10+360)&& (mousePressed)) {
+ rotationDegLevel10 =  270 - fireSelection3;
+ degreeSS10=1000;}
+ 
+//2
+fill(0);
+rect(145, 360, 70, 30);
+fill(255);
+text(fireSelection2, 169, 380);
+if((mouseX<=degreeSS10+215 && mouseX>=degreeSS10+145) && (mouseY<=degreeSS10+390 && mouseY>=degreeSS10+360)&& (mousePressed)) {
+ rotationDegLevel10 =  270 - fireSelection2;
+ degreeSS10=1000;}
+ 
+//1
+fill(0);
+rect(5, 360, 70, 30);
+fill(255);
+text(fireSelection1, 29, 380);
+if((mouseX<=degreeSS10+75 && mouseX>=degreeSS10+5) && (mouseY<=degreeSS10+390 && mouseY>=degreeSS10+360)&& (mousePressed)) {
+ rotationDegLevel10 =  270 - fireSelection1;
+ degreeSS10=1000;}
+ 
+ 
+ textSize(20);
+fill(0);
+text("LEVEL 10", 225, 25);
+
+push();
+fill(0);
+translate(150,286);
+rotate(radians(rotationDegLevel10-19.81));
+rect(0, 5, 7, 60);
+fill(255,0,0);
+rect(fireAtWill2Level10, fireAtWillLevel10,7, 9);
+pop();
+
+textSize(10);
+text("(sin^-1(1/2))/-3  LIFT", 350, 460);
+text("9.81 ", 350, 480);
+fill(0);
+
+ if((mouseX<=173 && mouseX>=83) && (mouseY<=465 && mouseY>=435)&& (mousePressed)) {
+fireAtWillLevel10= fireAtWillLevel10 +speedVariableLevel10;}
+
+
+
+fill(255, 0, 0);
+ellipse(0, 0, 50, 50);
+fill(plane, planeColou, planeColour);
+ellipse(480, 127, 37.5, 6.25);
+arc(493, 125.5, 9, 10, PI, TWO_PI);
+fill(bastFire, bastFire2, bastFire2);
+arc(472, 125, 16.25, 7.5, PI, TWO_PI);
+fill(0);
+rect(493, 120, 0.75, 5.75);
+rect(491.5, 123, 3.75, 0.75);
+fill(plane, planeColou, planeColour);
+triangle(469, 127.25, 490.5, 133.25, 495, 128.25);
+ 
+      if  ((fireAtWillLevel10<=462.5 && fireAtWillLevel10>=375.5)&& (rotationDegLevel10>=263.5 && rotationDegLevel10<=266)){
+speedVariableLevel10 = 0;}
+if  ((fireAtWillLevel10<=462.5 && fireAtWillLevel10>=375.5)&& (rotationDegLevel10>=263.5 && rotationDegLevel10<=266)){
+fill(0,255,0);
+ellipse(250, 110,levelCompleted10, levelCompleted10);
+levelCompleted10=levelCompleted10+3;
+if (levelCompleted10>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 10 COMPLETED", 70, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 0; // start menu
+}
+}}
+
+if  ((fireAtWillLevel10>=375.5)&& (rotationDegLevel10>=266 || rotationDegLevel10<=263.5)){
+speedVariableLevel10 = 0;}
+if  ((fireAtWillLevel10>=375.5)&& (rotationDegLevel10>=266 || rotationDegLevel10<=263.5)){
+fill(255,0,0);
+ellipse(250, 110,levelCompleted10, levelCompleted10);
+levelCompleted10=levelCompleted10+3;
+if (levelCompleted10>=400){
+  fill(0);
+  textSize(40);
+  text("LEVEL 10 FAILED", 110, 200);
+  fill(255);
+  rect(200, 230, 100,30);
+  fill(0);
+  textSize(20);
+  text("Continue", 205, 250);
+    if((mouseX<=300 && mouseX>=200) && (mouseY<=260 && mouseY>=230)&& (mousePressed)) {
+      state = 0; // start menu
+      resetTime();
+    resetLevel1();  
+      resetLevel2();
+      resetLevel3();
+      resetLevel4();
+      resetLevel5();
+      resetLevel6();
+      resetLevel7();
+      resetLevel8();
+      resetLevel9();
+      resetLevel10();
+      degreeSS10 = 0;
+   degreeSS9 = 0;
+ degreeSS8 = 0;
+ degreeSS7 = 0;
+       degreeSS6 = 0;
+       degreeSS5 = 0;
+       degreeSS4 = 0;
+      degreeSS3 = 0;
+       degreeSS2 = 0;
+      degreeSS = 0;
+}
+}}
+ 
+  destroyerSetup();
+  backgroundShip();
+  gameTimer();
+}
+
+void howToPlay(){
+background(154, 169, 214);
+
+manyClouds();
+stroke(10);
+fill(0);
+text("HOW TO PLAY",190, 20);
+textSize(8.5);
+text("1. FIND YOUR TARGET", 10, 50);
+text("----> The aim of the game is to destroy the attacking German plane.", 10, 70);
+text("----> Place the protractor on top of the artillery and match the plane to the degrees.", 10, 90);
+text("----> Keep track of this number, it will be slightly modified but will be a base-number", 10, 110);
+text("2. FACTOR IN VARIABLES", 10, 130);
+text("---> The bottom-right of the screen has variables such as lift and gravity", 10, 150);
+text("---> Subtract lift from gravity to understand the net-lift (+) or net-decline (-)", 10, 170);
+text("---> Add or subtract this net-lift / decline with the degrees you got from the protractor ", 10, 190);
+text("---> Located near the lift and gravity there will be a timer that will run throught ALL 10 LEVELS ", 10, 210);
+text("3. AIM AND FIRE YOUR ARTILLERY", 10, 230);
+text("--> Pick the degrees that represent the value closest to your measurement (measurement= Angle +- net-lift/decline) ", 10, 250);
+text("--> Once you type in the degrees, hold the fire button and the artillery will launch. Be vigilant  ", 10, 270);
+textSize(11);
+text("After you have launched the artillery (holding FIRE), one of the following screen will appear  ", 10, 320);
+fill(0,255,0);
+rect(30, 330, 200, 100);
+fill(0);
+text("LEVEL COMPLETED", 80, 385);
+fill(255,0,0);
+rect(260, 330, 200, 100);
+fill(0);
+text("LEVEL FAILED", 325, 385);
+text("If you have failed, you will start from the beginning ", 120, 450);
+text("If you have passed, continue to the next level (Congratulations!) ", 80, 490);
+}
+void info(){
+background(154, 169, 214);
+
+fill(255,0,0);
+ellipse(257,0,150,150);
+manyClouds();
+stroke(10);
+fill(0);
+text("INFORMATION",190, 20);
+textSize(9);
+text("  ----->>> GLORY IS AN INTERACTIVE BATTLE GAME THAT ENHANCES GEOMETRICAL MATH SKILLS." , 10, 340);
+text("  ----->>> RECOMENDED AUDIENCE = 15+ (MATHAMATCS CAN REACH GRADE 11)", 10, 370);
+text("  ----->>> THIS GAME IS UNDERSTRICT COPYRIGHT, NO GAME REPLICATION IS ALLOWED", 10, 400);
+text("  ----->>> GAME CREATED BY: CHARLIE MARTINEZ (DECEMBER 2021)", 10, 430);
+text("  ----->>> SPECIAL THANKS TO: processing.org, THE CODING TRAIN YOUTUBE, ICS201 TEACHERS", 10, 460);
+textSize(20);
+text("    PEACE,       LIBERTY,        DEFENSE", 50, 270);
+textSize(10);
+text("A Quote by Sir Charles Martinez & Logan Ward (Nation Leaders)  ", 90, 290);
+
+}
+
+
+void draw(){  
+   drawOpening();
+ 
+if (state == 0){
+    drawOpening();}
+if (state == 1){
+    gameLevel1();}
+if (state == 2){
+    howToPlay(); }
+if (state == 3){
+    info(); }
+if (state == 4){
+    gameLevel2(); }
+if (state == 5){
+    gameLevel3(); }
+if (state == 6){
+    gameLevel4(); }
+ if (state == 7){
+    gameLevel5(); }
+ if (state == 8){
+    gameLevel6(); }
+ if (state == 9){
+    gameLevel7(); }
+ if (state == 10){
+    gameLevel8(); }
+ if (state == 11){
+    gameLevel9(); }
+if (state == 12){
+    gameLevel0(); }
+}
+
+__________________________________________________________________________________________________________________________
+
+
+void keyPressed(){
+   if ((key == 'q')&&(state==1)) {
+      state=0;
+      resetLevel1();
+      resetTime();
+   }
+   if ((key == 'q')&&(state==2)) {
+     state=0;   
+   }
+   if ((key == 'q')&&(state==3)) {
+      state=0;}
+
+    if ((key == 'q')&&(state==4)) {
+      state=0;
+      resetLevel1();
+      resetLevel2();
+      resetTime();
+   }
+ if ((key == 'q')&&(state==5)) {
+      state=0;
+      resetLevel1();
+      resetLevel2();
+      resetLevel3();
+      resetTime();
+   }
+ if ((key == 'q')&&(state==6)) {
+      state=0;
+      resetLevel1();
+      resetLevel2();
+      resetLevel3();
+      resetLevel4();
+      resetTime();
+   }
+  if ((key == 'q')&&(state==7)) {
+      state=0;
+      resetLevel1();
+      resetLevel2();
+      resetLevel3();
+      resetLevel4();
+      resetLevel5();
+      resetTime();
+   }
+   if ((key == 'q')&&(state==8)) {
+      state=0;
+      resetLevel1();
+      resetLevel2();
+      resetLevel3();
+      resetLevel4();
+      resetLevel5();
+      resetLevel6();
+      resetTime();
+   }
+ if ((key == 'q')&&(state==9)) {
+      state=0;
+      resetLevel1();
+      resetLevel2();
+      resetLevel3();
+      resetLevel4();
+      resetLevel5();
+      resetLevel6();
+      resetLevel7();
+      resetTime();
+   }
+  if ((key == 'q')&&(state==10)) {
+      state=0;
+      resetLevel1();
+      resetLevel2();
+      resetLevel3();
+      resetLevel4();
+      resetLevel5();
+      resetLevel6();
+      resetLevel7();
+      resetLevel8();
+      resetTime();
+   }
+ if ((key == 'q')&&(state==11)) {
+      state=0;
+      resetLevel1();
+      resetLevel2();
+      resetLevel3();
+      resetLevel4();
+      resetLevel5();
+      resetLevel6();
+      resetLevel7();
+      resetLevel8();
+      resetLevel9();
+      resetTime();
+   }
+  if ((key == 'q')&&(state==12)) {
+      state=0;
+      resetLevel1();
+      resetLevel2();
+      resetLevel3();
+      resetLevel4();
+      resetLevel5();
+      resetLevel6();
+      resetLevel7();
+      resetLevel8();
+      resetLevel9();
+      resetLevel10();
+      resetTime();
+   }
+ 
+ }
+____________________________________________________________________
+
+void gameTimer(){
+  textSize(10);
+   text("TIME LEFT:", 380, 430);
+  text(time, 440, 430);
+time = time -1;
+  if (time <= 0){
+state=0;} 
+}  
